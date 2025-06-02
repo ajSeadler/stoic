@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+/* Hide scrollbars globally */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* === THEME VARIABLES === */
+/* Base utility classes for colors from variables */
+
+.bg-bg {
+  background-color: rgb(var(--background));
+}
+
+.text-copy {
+  color: rgb(var(--copy-primary));
+}
+
+.text-copy-secondary {
+  color: rgb(var(--copy-secondary));
+}
+
+.bg-card {
+  background-color: rgb(var(--card));
+}
+
+.border-border {
+  border-color: rgb(var(--border));
+}
+
+.bg-cta {
+  background-color: rgb(var(--cta));
+}
+
+.text-cta-text {
+  color: rgb(var(--cta-text));
+}
+
+.bg-cta-active {
+  background-color: rgb(var(--cta-active));
+}
+
+/* === LIGHT THEME === */
+.light {
+  --background: 245, 245, 245;
+  /* Soft warm light gray */
+  --border: 212, 212, 212;
+  /* Light gray border */
+  --card: 255, 255, 255;
+  /* White card */
+  --copy-primary: 23, 23, 23;
+  /* Dark text */
+  --copy-secondary: 115, 115, 115;
+  /* Medium gray text */
+  --cta: 139, 92, 246;
+  /* Muted purple */
+  --cta-active: 124, 58, 237;
+  /* Darker purple */
+  --cta-text: 255, 255, 255;
+  /* White on buttons */
+}
+
+/* === DARK THEME === */
+.dark {
+  --background: 20, 20, 20;
+  /* Very dark gray background */
+  --border: 50, 50, 50;
+  /* Darker border */
+  --card: 30, 30, 30;
+  /* Dark card background */
+  --copy-primary: 230, 230, 230;
+  /* Light gray text */
+  --copy-secondary: 150, 150, 150;
+  /* Medium gray text */
+  --cta: 120, 100, 230;
+  /* Slightly desaturated purple */
+  --cta-active: 100, 80, 200;
+  /* Darker purple for hover */
+  --cta-text: 255, 255, 255;
+  /* White text */
+}
+
+/* === FOREST THEME === */
+.forest {
+  --background: 15, 30, 15;
+  /* Very dark forest green */
+  --border: 30, 50, 30;
+  /* Slightly lighter green border */
+  --card: 40, 70, 40;
+  /* Medium forest green card */
+  --copy-primary: 190, 220, 190;
+  /* Light green text */
+  --copy-secondary: 150, 180, 150;
+  /* Muted green text */
+  --cta: 90, 150, 80;
+  /* Soft fern green */
+  --cta-active: 70, 120, 60;
+  /* Darker green for hover */
+  --cta-text: 255, 255, 255;
+  /* White on buttons */
+}
+
+/* === DESERT THEME === */
+.desert {
+  --background: 240, 220, 180;
+  /* Warm sandy beige */
+  --border: 200, 170, 130;
+  /* Soft dune border */
+  --card: 255, 245, 220;
+  /* Light sand card */
+  --copy-primary: 80, 60, 40;
+  /* Dark sienna text */
+  --copy-secondary: 130, 100, 70;
+  /* Muted brown text */
+  --cta: 180, 100, 30;
+  /* Rustic orange */
+  --cta-active: 150, 80, 20;
+  /* Darker orange for hover */
+  --cta-text: 255, 255, 255;
+  /* White on buttons */
+}
+
+/* === OCEAN THEME === */
+.ocean {
+  --background: 10, 30, 40;
+  /* Deep sea blue */
+  --border: 30, 70, 90;
+  /* Ocean teal border */
+  --card: 20, 50, 70;
+  /* Medium ocean card */
+  --copy-primary: 200, 230, 240;
+  /* Light cyan text */
+  --copy-secondary: 120, 170, 190;
+  /* Muted teal text */
+  --cta: 0, 140, 190;
+  /* Bright ocean blue */
+  --cta-active: 0, 110, 150;
+  /* Darker ocean blue */
+  --cta-text: 255, 255, 255;
+  /* White on buttons */
+}
+
+/* === MIDNIGHT THEME === */
+.midnight {
+  --background: 10, 10, 50;
+  /* Very dark navy */
+  --border: 20, 20, 70;
+  /* Dark periwinkle border */
+  --card: 30, 30, 90;
+  /* Twilight card */
+  --copy-primary: 210, 210, 240;
+  /* Lavender-ish text */
+  --copy-secondary: 150, 150, 180;
+  /* Soft periwinkle */
+  --cta: 170, 190, 220;
+  /* Light sky blue */
+  --cta-active: 130, 160, 190;
+  /* Darker hover */
+  --cta-text: 0, 0, 40;
+  /* Very dark navy text */
+}
+
+/* === QUANTUM THEME === */
+.quantum {
+  --background: 10, 10, 15;
+  /* Deep space black */
+  --border: 30, 30, 45;
+  /* Graphite border */
+  --card: 20, 20, 30;
+  /* Subtle elevation card */
+  --copy-primary: 180, 200, 220;
+  /* Cool light grayish blue */
+  --copy-secondary: 120, 140, 160;
+  /* Soft titanium blue-gray */
+  --cta: 0, 180, 180;
+  /* Neon cyan */
+  --cta-active: 0, 140, 140;
+  /* Dimmed cyan for hover */
+  --cta-text: 0, 15, 20;
+  /* Very dark background text */
+}
+
+/* === SUNSET THEME === */
+.sunset {
+  --background: 255, 245, 230;
+  /* Soft warm ivory */
+  --border: 255, 200, 160;
+  /* Warm peach border */
+  --card: 255, 250, 240;
+  /* Cream card */
+  --copy-primary: 60, 30, 15;
+  /* Deep espresso */
+  --copy-secondary: 120, 80, 60;
+  /* Rich terracotta */
+  --cta: 255, 130, 10;
+  /* Vivid orange */
+  --cta-active: 220, 110, 0;
+  /* Darker orange hover */
+  --cta-text: 255, 255, 255;
+  /* White text */
+}
+
+/* === RED THEME === */
+.red {
+  --background: 30, 10, 20;
+  /* Deep dark maroon */
+  --border: 70, 40, 50;
+  /* Muted maroon border */
+  --card: 50, 20, 30;
+  /* Dark maroon card */
+  --copy-primary: 240, 200, 210;
+  /* Pale rose text */
+  --copy-secondary: 180, 140, 150;
+  /* Muted mauve */
+  --cta: 255, 80, 110;
+  /* Bright rose pink */
+  --cta-active: 200, 50, 80;
+  /* Darker hover */
+  --cta-text: 255, 255, 255;
+  /* White text */
+}
+
+/* === DARKTECH THEME === */
+.darktech {
+  --background: 15, 15, 20;
+  /* Very dark carbon black */
+  --border: 40, 40, 50;
+  /* Steely shadows */
+  --card: 25, 25, 30;
+  /* Soft dark surface */
+  --copy-primary: 210, 230, 220;
+  /* Cool light gray */
+  --copy-secondary: 140, 160, 150;
+  /* Slightly minty gray */
+  --cta: 100, 255, 180;
+  /* Glow green */
+  --cta-active: 70, 220, 150;
+  /* Dimmed green */
+  --cta-text: 0, 0, 0;
+  /* Black text on buttons */
+}
+
+/* === INFRAUV THEME === */
+.infrauv {
+  --background: 15, 5, 25;
+  /* Deep cosmic purple */
+  --border: 60, 10, 80;
+  /* Cosmic edge */
+  --card: 35, 15, 55;
+  /* Dim purple-black */
+  --copy-primary: 230, 220, 240;
+  /* Soft violet-white */
+  --copy-secondary: 160, 130, 170;
+  /* Muted lavender */
+  --cta: 255, 0, 130;
+  /* Infrared pink */
+  --cta-active: 210, 0, 100;
+  /* Slightly darker hover */
+  --cta-text: 255, 255, 255;
+  /* White buttons */
+}
+
+/* === Root variable for accent === */
+:root {
+  --grape: 114, 35, 204;
+}
