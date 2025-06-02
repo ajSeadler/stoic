@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ThemeSwitcherProps {
   theme: string;
@@ -82,6 +82,19 @@ const themes = Object.keys(themeColors);
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
   const [expanded, setExpanded] = useState(false);
 
+  // On mount, read from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("app-theme");
+    if (saved && theme !== saved) {
+      setTheme(saved);
+    }
+  }, [setTheme, theme]);
+
+  // Whenever `theme` prop changes, write it into localStorage
+  useEffect(() => {
+    localStorage.setItem("app-theme", theme);
+  }, [theme]);
+
   return (
     <div className="flex flex-col w-full select-none">
       {/* Toggle header */}
@@ -109,13 +122,12 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
         </svg>
       </button>
 
-      {/* Container with height transition and overflow hidden */}
+      {/* Collapsible panel */}
       <div
         className={`mt-2 overflow-hidden transition-[max-height] duration-300 ease-in-out ${
           expanded ? "max-h-96" : "max-h-0"
         }`}
       >
-        {/* Grid panel */}
         <div id="theme-switcher-panel" className="grid grid-cols-4 gap-1">
           {themes.map((t) => {
             const colors = themeColors[t];
@@ -126,19 +138,21 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
                 key={t}
                 onClick={() => setTheme(t)}
                 aria-label={`Select ${t} theme`}
-                className={`relative w-full aspect-square rounded transition-colors duration-200
+                className={`
+                  relative w-full aspect-square rounded transition-colors duration-200
                   border
                   ${
                     isActive
-                      ? "border-cta p-[2px]" // border-2 effect with padding inside to prevent overflow
+                      ? "border-cta p-[2px]" // highlight active theme
                       : "border-border hover:border-cta"
                   }
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1
                 `}
               >
+                {/* Four‐color preview inside */}
                 <div
                   className="absolute inset-1 flex space-x-1 rounded overflow-hidden"
-                  style={{ pointerEvents: "none" }} // disable pointer events on colors
+                  style={{ pointerEvents: "none" }}
                 >
                   <div
                     className="flex-1 rounded"

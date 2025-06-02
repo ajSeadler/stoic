@@ -10,6 +10,16 @@
   scrollbar-width: none;
 }
 
+.text-base-dynamic {
+  font-size: var(--font-size-base);
+}
+
+:root {
+  --user-font-size: 1rem;
+  /* default */
+}
+
+
 /* === THEME VARIABLES === */
 /* Base utility classes for colors from variables */
 
@@ -63,6 +73,7 @@
   /* Darker purple */
   --cta-text: 255, 255, 255;
   /* White on buttons */
+  --font-size-base: 16px;
 }
 
 /* === DARK THEME === */
@@ -83,6 +94,7 @@
   /* Darker purple for hover */
   --cta-text: 255, 255, 255;
   /* White text */
+  --font-size-base: 16px;
 }
 
 /* === FOREST THEME === */
@@ -103,6 +115,7 @@
   /* Darker green for hover */
   --cta-text: 255, 255, 255;
   /* White on buttons */
+  --font-size-base: 16px;
 }
 
 /* === DESERT THEME === */
@@ -123,6 +136,7 @@
   /* Darker orange for hover */
   --cta-text: 255, 255, 255;
   /* White on buttons */
+  --font-size-base: 16px;
 }
 
 /* === OCEAN THEME === */
@@ -143,6 +157,7 @@
   /* Darker ocean blue */
   --cta-text: 255, 255, 255;
   /* White on buttons */
+  --font-size-base: 16px;
 }
 
 /* === MIDNIGHT THEME === */
@@ -163,6 +178,7 @@
   /* Darker hover */
   --cta-text: 0, 0, 40;
   /* Very dark navy text */
+  --font-size-base: 16px;
 }
 
 /* === QUANTUM THEME === */
@@ -183,6 +199,7 @@
   /* Dimmed cyan for hover */
   --cta-text: 0, 15, 20;
   /* Very dark background text */
+  --font-size-base: 16px;
 }
 
 /* === SUNSET THEME === */
@@ -203,6 +220,7 @@
   /* Darker orange hover */
   --cta-text: 255, 255, 255;
   /* White text */
+  --font-size-base: 16px;
 }
 
 /* === RED THEME === */
@@ -223,6 +241,7 @@
   /* Darker hover */
   --cta-text: 255, 255, 255;
   /* White text */
+  --font-size-base: 16px;
 }
 
 /* === DARKTECH THEME === */
@@ -243,6 +262,7 @@
   /* Dimmed green */
   --cta-text: 0, 0, 0;
   /* Black text on buttons */
+  --font-size-base: 16px;
 }
 
 /* === INFRAUV THEME === */
@@ -263,6 +283,7 @@
   /* Slightly darker hover */
   --cta-text: 255, 255, 255;
   /* White buttons */
+  --font-size-base: 16px;
 }
 
 /* === Root variable for accent === */
