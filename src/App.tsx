@@ -1,10 +1,10 @@
 import "./App.css";
-import { StoicQuote } from "./StoicQuote";
+import AppHeroLayout from "./AppHeroLayout";
 
 function App() {
   return (
     <>
-      <StoicQuote />
+      <AppHeroLayout />
     </>
   );
 }
