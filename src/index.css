@@ -20,40 +20,6 @@
 }
 
 
-/* === THEME VARIABLES === */
-/* Base utility classes for colors from variables */
-
-.bg-bg {
-  background-color: rgb(var(--background));
-}
-
-.text-copy {
-  color: rgb(var(--copy-primary));
-}
-
-.text-copy-secondary {
-  color: rgb(var(--copy-secondary));
-}
-
-.bg-card {
-  background-color: rgb(var(--card));
-}
-
-.border-border {
-  border-color: rgb(var(--border));
-}
-
-.bg-cta {
-  background-color: rgb(var(--cta));
-}
-
-.text-cta-text {
-  color: rgb(var(--cta-text));
-}
-
-.bg-cta-active {
-  background-color: rgb(var(--cta-active));
-}
 
 /* === LIGHT THEME === */
 .light {
@@ -289,4 +255,64 @@
 /* === Root variable for accent === */
 :root {
   --grape: 114, 35, 204;
+}
+
+
+input[type="range"].accent-cta {
+  /* Base track styles */
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgb(var(--border));
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+input[type="range"].accent-cta::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgb(var(--cta));
+  cursor: pointer;
+  margin-top: -6px;
+  /* center thumb on track */
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+input[type="range"].accent-cta:hover::-webkit-slider-thumb {
+  background: rgb(var(--cta-active));
+}
+
+/* Firefox */
+input[type="range"].accent-cta::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgb(var(--cta));
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+input[type="range"].accent-cta:hover::-moz-range-thumb {
+  background: rgb(var(--cta-active));
+}
+
+/* Track for Firefox */
+input[type="range"].accent-cta::-moz-range-track {
+  background: rgb(var(--border));
+  height: 6px;
+  border-radius: 3px;
+}
+
+/* Track for WebKit */
+input[type="range"].accent-cta::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgb(var(--border));
 }

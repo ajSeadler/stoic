@@ -1,42 +1,160 @@
-import { Search } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Rocket } from "lucide-react";
+import HeroSnippet from "./HeroSnippet";
+import PortfolioSection from "./PortfolioSection";
+
+const TYPEWRITER_WORDS = [
+  "Frontend Engineer",
+  "UI/UX Aficionado",
+  "Performance Optimizer",
+  "Accessibility Advocate",
+];
 
 const HeroSection = () => {
+  const [currentWord, setCurrentWord] = useState<string>("");
+  const [wordIndex, setWordIndex] = useState<number>(0);
+  const [charIndex, setCharIndex] = useState<number>(0);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const TYPING_DELAY = 100;
+  const DELETING_DELAY = 50;
+  const PAUSE_AFTER_WORD = 1500;
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const fullWord = TYPEWRITER_WORDS[wordIndex];
+      if (!isDeleting && charIndex <= fullWord.length) {
+        setCurrentWord(fullWord.slice(0, charIndex));
+        setCharIndex((prev) => prev + 1);
+      } else if (isDeleting && charIndex >= 0) {
+        setCurrentWord(fullWord.slice(0, charIndex));
+        setCharIndex((prev) => prev - 1);
+      }
+
+      if (!isDeleting && charIndex === fullWord.length + 1) {
+        setTimeout(() => setIsDeleting(true), PAUSE_AFTER_WORD);
+      } else if (isDeleting && charIndex === -1) {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % TYPEWRITER_WORDS.length);
+        setCharIndex(0);
+      }
+    };
+
+    const timeoutId = window.setTimeout(
+      handleTyping,
+      isDeleting ? DELETING_DELAY : TYPING_DELAY
+    );
+    return () => clearTimeout(timeoutId);
+  }, [charIndex, isDeleting, wordIndex]);
+
   return (
     <section
-      aria-label="Hero section with skatepark search"
-      className="w-full flex flex-col items-center justify-center text-copy px-6 sm:px-10 md:px-16 py-20 gap-10"
+      aria-label="Hero section"
+      className="min-h-screen p-6 py-20 w-full md:px-16 flex flex-col items-center text-[rgb(var(--copy-primary))]"
       style={{ fontSize: "var(--user-font-size)" }}
     >
-      <div className="max-w-3xl text-center space-y-6">
-        <h1 className="text-cta font-extrabold leading-tight text-[clamp(1.5em,4vw,3em)]">
-          Discover Skateparks Near You
-        </h1>
+      {/* Wrapper for vertical centering */}
+      <div className="flex flex-col justify-center items-center flex-grow w-full max-w-4xl text-center space-y-8">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-extrabold tracking-tight text-[rgb(var(--cta))]"
+          style={{ fontSize: "clamp(1.8em, 5vw, 3.4em)", lineHeight: 1.1 }}
+        >
+          Hi, I’m{" "}
+          <span className="underline decoration-[rgb(var(--cta))]">AJ</span>
+        </motion.h1>
 
-        <p className="text-copy-secondary text-[1em] leading-relaxed px-2 sm:px-4">
-          Explore hundreds of skateparks across the country. Find hidden gems,
-          plan your next trip, or simply cruise through what’s nearby.
-        </p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="text-[rgb(var(--copy-secondary))] leading-relaxed text-lg"
+        >
+          <span className="mr-1">I’m a</span>
+          <span className="font-medium text-[rgb(var(--cta))]">
+            {currentWord}
+            <span className="inline-block animate-blink">|</span>
+          </span>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="text-[rgb(var(--copy-secondary))] leading-relaxed max-w-xl"
+          style={{ fontSize: "1em" }}
+        >
+          Crafting pixel-perfect, accessible, and high-performance web apps
+          using React, TypeScript, and cutting-edge design systems. Let’s build
+          something amazing.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.6 }}
+          className="flex flex-wrap justify-center gap-4"
+        >
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 bg-[rgb(var(--cta))] text-[rgb(var(--cta-text))] font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[rgb(var(--cta-active))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--cta))] transition"
+            style={{ fontSize: "1em" }}
+          >
+            <Rocket size={20} />
+            <span>View Projects</span>
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 border border-[rgb(var(--border))] bg-[rgb(var(--card))] text-[rgb(var(--copy-secondary))] font-medium px-6 py-3 rounded-full hover:border-[rgb(var(--cta))] hover:text-[rgb(var(--cta))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--cta))] transition"
+            style={{ fontSize: "1em" }}
+          >
+            <Mail size={20} />
+            <span>Get in Touch</span>
+          </a>
+        </motion.div>
       </div>
 
-      <form
-        className="w-full max-w-xl flex items-center gap-2 bg-card border border-border rounded-full shadow-md px-4 py-3 focus-within:ring-2 focus-within:ring-cta transition"
-        onSubmit={(e) => e.preventDefault()}
+      {/* Scroll-Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 2.2 }}
+        className="mt-10 flex flex-col items-center text-[rgb(var(--copy-secondary))] select-none space-y-1"
+        style={{ fontSize: "0.9em" }}
       >
-        <Search size={20} className="text-copy-secondary mr-2 flex-shrink-0" />
-        <input
-          id="park-search"
-          placeholder="Search parks..."
-          className="flex-grow min-w-0 bg-transparent text-copy outline-none placeholder-copy-secondary"
-          style={{ fontSize: "inherit" }}
-        />
-        <button
-          type="submit"
-          className="bg-cta text-cta-text font-semibold rounded-full px-5 py-2 hover:bg-cta-active transition whitespace-nowrap"
-          style={{ fontSize: "inherit" }}
+        <motion.span
+          className="block"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          aria-hidden="true"
+          style={{ fontSize: "1.6em" }}
         >
-          Search
-        </button>
-      </form>
+          ⌄
+        </motion.span>
+        <span className="tracking-wide">Scroll to explore</span>
+      </motion.div>
+
+      {/* HeroSnippet */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 2.6 }}
+        className="mt-8"
+        style={{ minHeight: "520px" }}
+      >
+        <HeroSnippet />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 2.6 }}
+        className="mt-8"
+        style={{ minHeight: "520px" }}
+      >
+        <PortfolioSection />
+      </motion.div>
     </section>
   );
 };

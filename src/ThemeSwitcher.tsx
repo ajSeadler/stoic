@@ -102,7 +102,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
         aria-controls="theme-switcher-panel"
-        className="flex items-center justify-between w-full px-2 font-semibold text-sm text-copy-secondary hover:text-cta focus:outline-none focus:ring-2 focus:ring-cta rounded"
+        className="flex items-center justify-between w-full px-2 py-2 font-semibold text-sm text-copy-secondary hover:text-cta focus:outline-none focus:ring-2 focus:ring-cta rounded"
       >
         <span>Theme</span>
         <svg

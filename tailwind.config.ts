@@ -2,43 +2,57 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,astro,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,astro,mdx}",
   ],
   theme: {
     extend: {
+      fontSize: {
+        base: "var(--user-font-size)", // supports dynamic user-defined font size
+      },
       colors: {
-        bg: "var(--bg)",
-        card: "var(--card)",
-        border: "var(--border)",
-        copy: "var(--copy)",
-        cta: "var(--cta)",
+        // These align with your CSS variable setup
+        bg: "rgb(var(--background) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        border: "rgb(var(--border) / <alpha-value>)",
+        copy: "rgb(var(--copy-primary) / <alpha-value>)",
+        "copy-secondary": "rgb(var(--copy-secondary) / <alpha-value>)",
+        cta: "rgb(var(--cta) / <alpha-value>)",
+        "cta-active": "rgb(var(--cta-active) / <alpha-value>)",
+        "cta-text": "rgb(var(--cta-text) / <alpha-value>)",
       },
-      keyframes: {
-        bar: {
-          "0%, 100%": { transform: "scaleY(0.6)", opacity: "0.7" },
-          "50%": { transform: "scaleY(1.2)", opacity: "1" },
-        },
-        fadein: {
-          from: { opacity: 0, transform: "translateY(0.2em)" },
-          to: { opacity: 1, transform: "translateY(0)" },
-        },
-        // → New bounce-once keyframes
-        "bounce-once": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
+      textColor: {
+        copy: "rgb(var(--copy-primary) / <alpha-value>)",
+        "copy-secondary": "rgb(var(--copy-secondary) / <alpha-value>)",
+        cta: "rgb(var(--cta) / <alpha-value>)",
       },
-      animation: {
-        bar: "bar 1s ease-in-out infinite",
-        fadein: "fadein 0.4s ease forwards",
-        // → New bounce-once animation: 3 bounces, then stays put
-        "bounce-once": "bounce-once 1.2s ease-in-out 3 forwards",
+      backgroundColor: {
+        bg: "rgb(var(--background) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        cta: "rgb(var(--cta) / <alpha-value>)",
+        "cta-active": "rgb(var(--cta-active) / <alpha-value>)",
+      },
+      borderColor: {
+        border: "rgb(var(--border) / <alpha-value>)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        ".text-base-dynamic": {
+          "font-size": "var(--font-size-base)",
+        },
+      });
+    },
+  ],
 };
 
 export default config;
