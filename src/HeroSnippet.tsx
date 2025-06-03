@@ -1,93 +1,9 @@
 import { useState } from "react";
 import { TerminalSquare, X, Minus, Square } from "lucide-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const HeroSnippet = () => {
-  const [showTerminal, setShowTerminal] = useState(true);
-
-  return (
-    <div
-      className="rounded-xl border shadow-xl mx-auto font-mono select-text"
-      style={{
-        fontSize: "var(--user-font-size)",
-        backgroundColor: "var(--bg-card)",
-        borderColor: "var(--border)",
-        color: "var(--copy)",
-        boxShadow:
-          "0 10px 30px -10px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.3)",
-      }}
-    >
-      {/* Title Bar */}
-      <header
-        className="flex items-center justify-between px-4 py-2 rounded-t-xl"
-        style={{
-          backgroundColor: "var(--bg-card-alt)",
-          color: "var(--copy-secondary)",
-          userSelect: "none",
-          fontWeight: 600,
-          fontSize: "0.85rem",
-          letterSpacing: "0.04em",
-        }}
-      >
-        <div className="flex items-center space-x-3">
-          <span
-            className="ml-5 tracking-wide font-semibold select-text"
-            style={{ color: "var(--copy)" }}
-          >
-            skills.ts - Visual Studio Code
-          </span>
-        </div>
-        <div
-          className="flex space-x-3 opacity-60 cursor-default"
-          style={{ color: "var(--copy-secondary)" }}
-          aria-hidden="true"
-        >
-          <Minus size={14} />
-          <Square size={14} />
-          <X size={14} />
-        </div>
-      </header>
-
-      {/* Tabs */}
-      <nav
-        className="flex bg-[var(--bg-card-alt)] border-b border-[var(--border)]"
-        aria-label="File tabs"
-      >
-        {["skills.ts"].map((tab, i) => (
-          <button
-            key={tab}
-            type="button"
-            className={`flex-1 px-5 py-3 text-sm font-semibold tracking-wide transition-colors duration-200 focus:outline-none ${
-              i === 0
-                ? "bg-[var(--bg-card)] text-[var(--copy)] border-b-2 border-[rgb(var(--cta))]"
-                : "text-[var(--copy-secondary)] hover:bg-[var(--bg-card)] hover:text-[var(--copy)]"
-            }`}
-            aria-current={i === 0 ? "page" : undefined}
-          >
-            {tab}
-          </button>
-        ))}
-      </nav>
-
-      {/* Code & Terminal Container */}
-      <section
-        className={`relative flex flex-col transition-all duration-300 ease-in-out ${
-          showTerminal ? "h-[420px]" : "h-[520px]"
-        }`}
-      >
-        {/* Code block */}
-        <pre
-          className="flex-1 overflow-y-auto p-6 font-mono whitespace-pre-wrap leading-relaxed"
-          style={{
-            fontSize: "calc(var(--user-font-size) * 0.75)",
-            color: "var(--copy)",
-            backgroundColor: "var(--bg-card)",
-            WebkitFontSmoothing: "antialiased",
-            MozOsxFontSmoothing: "grayscale",
-            userSelect: "text",
-            margin: 0,
-          }}
-        >
-          {`// skills.ts
+const code = `// skills.ts
 
 /**
  * Core skills organized by domain
@@ -126,55 +42,154 @@ export function getSkillsByCategory(category: Skill["category"]): string[] {
 // Example usage:
 console.log("Frontend Skills:", getSkillsByCategory("Frontend"));
 console.log("Networking Skills:", getSkillsByCategory("Networking"));
-`}
-        </pre>
+`;
+
+const HeroSnippet = () => {
+  const [showTerminal, setShowTerminal] = useState(true);
+
+  return (
+    <div
+      className="
+        overflow-x-hidden
+        rounded-xl border shadow-xl mx-auto font-mono select-text 
+        w-full max-w-full bg-[#282a36] border-[#6272a4] text-[#f8f8f2] 
+        flex flex-col min-h-0
+      "
+      style={{
+        fontSize: "var(--user-font-size, 1em)",
+        boxShadow:
+          "0 15px 40px -10px rgba(0, 0, 0, 0.7), 0 6px 10px -4px rgba(0, 0, 0, 0.5)",
+      }}
+    >
+      {/* Title Bar */}
+      <header
+        className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 rounded-t-xl select-none text-[0.85em] font-semibold tracking-wide"
+        style={{
+          backgroundColor: "#44475a",
+          color: "#6272a4",
+          letterSpacing: "0.04em",
+        }}
+      >
+        <div className="flex items-center space-x-2">
+          <TerminalSquare size={16} className="text-purple-400 flex-shrink-0" />
+          <span
+            className="ml-1 text-sm sm:text-base"
+            style={{ color: "#f8f8f2" }}
+          >
+            skills.ts — Visual Studio Code
+          </span>
+        </div>
+        <div
+          className="flex space-x-2 cursor-default"
+          style={{ color: "#6272a4" }}
+          aria-hidden="true"
+        >
+          <Minus size={14} />
+          <Square size={14} />
+          <X size={14} />
+        </div>
+      </header>
+
+      {/* Tabs */}
+      <nav
+        className="flex border-b overflow-x-auto"
+        style={{ backgroundColor: "#44475a", borderColor: "#6272a4" }}
+        aria-label="File tabs"
+      >
+        <button
+          type="button"
+          className="px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap focus:outline-none"
+          aria-current="page"
+          style={{
+            backgroundColor: "#282a36",
+            color: "#f8f8f2",
+            borderBottom: "2px solid #ff79c6",
+          }}
+        >
+          skills.ts
+        </button>
+      </nav>
+
+      {/* Code & Terminal Container */}
+      <section className="relative flex flex-col flex-grow min-h-0">
+        {/* Code block container */}
+        <div
+          className="overflow-y-auto p-3 sm:p-5 flex-grow min-h-0 w-full"
+          style={{ maxHeight: showTerminal ? "45vh" : "65vh" }}
+        >
+          <SyntaxHighlighter
+            language="typescript"
+            style={dracula}
+            wrapLongLines={true}
+            wrapLines={true}
+            lineProps={{
+              style: { whiteSpace: "pre-wrap", wordBreak: "break-word" },
+            }}
+            customStyle={{
+              background: "transparent",
+              fontSize: "calc(var(--user-font-size, 1em) * 0.85)",
+              padding: 0,
+              margin: 0,
+              fontFamily: "var(--font-mono, monospace)",
+              WebkitFontSmoothing: "antialiased",
+              MozOsxFontSmoothing: "grayscale",
+              overflowWrap: "break-word",
+              wordBreak: "break-word",
+            }}
+          >
+            {code}
+          </SyntaxHighlighter>
+        </div>
 
         {/* Terminal Toggle Bar */}
         <div
-          className="flex items-center justify-between px-5 py-2 border-t select-none cursor-default"
+          className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 border-t select-none cursor-default"
           style={{
-            backgroundColor: "var(--bg-card)",
-            borderColor: "var(--border)",
-            color: "var(--copy-secondary)",
-            fontSize: "0.75rem",
+            backgroundColor: "#282a36",
+            borderColor: "#6272a4",
+            color: "#6272a4",
+            fontSize: "0.75em",
             letterSpacing: "0.1em",
             fontWeight: 600,
-            userSelect: "none",
           }}
         >
           <button
             onClick={() => setShowTerminal(!showTerminal)}
-            className="inline-flex items-center space-x-2 text-green-500 hover:text-green-400 transition-colors duration-200 focus:outline-none"
+            className="inline-flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors duration-200 focus:outline-none"
             aria-pressed={showTerminal}
           >
             <TerminalSquare size={16} />
-            <span>{showTerminal ? "Hide Terminal" : "Run"}</span>
+            <span className="text-xs sm:text-sm">
+              {showTerminal ? "Hide Terminal" : "Run"}
+            </span>
           </button>
-          <span className="tracking-widest opacity-50 select-none">
+          <span
+            className="tracking-widest opacity-50 select-none text-xs sm:text-sm"
+            style={{ color: "#6272a4" }}
+          >
             TERMINAL
           </span>
         </div>
 
         {/* Terminal Output */}
         <div
-          className={`overflow-y-auto px-6 py-4 border-t transition-opacity duration-300 ease-in-out ${
-            showTerminal
-              ? "opacity-100 h-36"
-              : "opacity-0 h-0 pointer-events-none"
+          className={`overflow-y-auto px-3 sm:px-5 py-3 border-t transition-opacity duration-300 ease-in-out ${
+            showTerminal ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
           style={{
-            borderColor: "var(--border)",
-            backgroundColor: "var(--bg-card)",
-            color: "var(--copy)",
-            fontSize: "calc(var(--user-font-size) * 0.75)",
+            borderColor: "#6272a4",
+            backgroundColor: "#282a36",
+            color: "#f8f8f2",
+            fontSize: "calc(var(--user-font-size, 1em) * 0.85)",
             fontFamily: "monospace",
-            lineHeight: 1.5,
-            userSelect: "text",
+            lineHeight: 1.6,
             letterSpacing: "0.03em",
+            whiteSpace: "pre-wrap",
+            maxHeight: "18vh",
           }}
           aria-live="polite"
         >
-          <div className="space-y-1 select-text">
+          <div className="space-y-1 select-text text-[0.9em] sm:text-[1em]">
             <div>Frontend Skills: React.js, TypeScript, Tailwind CSS</div>
             <div>Backend Skills: Node.js, Express.js, RESTful API Design</div>
             <div>

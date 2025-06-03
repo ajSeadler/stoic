@@ -76,18 +76,14 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
         `}
       >
         {/* Header */}
-        <div
-          className="flex items-center h-16 px-4 border-b border-[rgb(var(--border))] select-none"
-          style={{ color: "rgb(var(--cta))" }}
-        >
+        <div className="flex items-center h-16 px-4 border-b border-[rgb(var(--border))] select-none">
           {(desktopOpen || mobileOpen) && (
             <span
               className="text-xl font-bold truncate"
               title="App"
               aria-label="App name"
-              style={{ color: "rgb(var(--cta))" }}
             >
-              App
+              aj.dev
             </span>
           )}
 

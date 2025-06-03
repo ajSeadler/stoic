@@ -58,12 +58,15 @@ const HeroSection = () => {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-extrabold tracking-tight text-[rgb(var(--cta))]"
-          style={{ fontSize: "clamp(1.8em, 5vw, 3.4em)", lineHeight: 1.1 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="font-extrabold tracking-tight text-[rgb(var(--copy-primary))] text-balance text-center md:text-left"
+          style={{
+            fontSize: "clamp(2.25rem, 6vw, 3.75rem)",
+            lineHeight: "1.1",
+            letterSpacing: "-0.015em",
+          }}
         >
-          Hi, I’m{" "}
-          <span className="underline decoration-[rgb(var(--cta))]">AJ</span>
+          Hi, I’m <span className=" text-[rgb(var(--cta))]">AJ</span>
         </motion.h1>
 
         <motion.div
