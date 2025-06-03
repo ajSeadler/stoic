@@ -28,7 +28,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
 
   const links = [
     { to: "/", label: "Home", Icon: Home },
-    { to: "/comingsoon", label: "About Me", Icon: User },
+    { to: "/about", label: "About Me", Icon: User },
     { to: "/comingsoon", label: "Portfolio", Icon: Settings },
     { to: "/comingsoon", label: "Support", Icon: LifeBuoy },
   ];
