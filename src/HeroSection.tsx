@@ -50,11 +50,11 @@ const HeroSection = () => {
   return (
     <section
       aria-label="Hero section"
-      className="min-h-screen p-6 py-20 w-full md:px-16 flex flex-col items-center text-[rgb(var(--copy-primary))]"
+      className="p-6 pt-20 w-full md:px-16 text-[rgb(var(--copy-primary))]"
       style={{ fontSize: "var(--user-font-size)" }}
     >
-      {/* Wrapper for vertical centering */}
-      <div className="flex flex-col justify-center items-center flex-grow w-full max-w-4xl text-center space-y-8">
+      {/* Centered Hero Content */}
+      <div className="min-h-screen flex flex-col justify-center items-center w-full max-w-4xl mx-auto text-center space-y-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ const HeroSection = () => {
             letterSpacing: "-0.015em",
           }}
         >
-          Hi, I’m <span className=" text-[rgb(var(--cta))]">AJ</span>
+          Hi, I’m <span className="text-[rgb(var(--cta))]">AJ</span>
         </motion.h1>
 
         <motion.div
@@ -117,43 +117,43 @@ const HeroSection = () => {
             <span>Get in Touch</span>
           </a>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 2.2 }}
+          className="mt-10 flex flex-col items-center text-[rgb(var(--copy-secondary))] select-none space-y-1"
+          style={{ fontSize: "0.9em" }}
+        >
+          <motion.span
+            className="block"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            aria-hidden="true"
+            style={{ fontSize: "1.6em" }}
+          >
+            ⌄
+          </motion.span>
+          <span className="tracking-wide">Scroll to explore</span>
+        </motion.div>
       </div>
 
-      {/* Scroll-Down Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 2.2 }}
-        className="mt-10 flex flex-col items-center text-[rgb(var(--copy-secondary))] select-none space-y-1"
-        style={{ fontSize: "0.9em" }}
-      >
-        <motion.span
-          className="block"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          aria-hidden="true"
-          style={{ fontSize: "1.6em" }}
-        >
-          ⌄
-        </motion.span>
-        <span className="tracking-wide">Scroll to explore</span>
-      </motion.div>
-
-      {/* HeroSnippet */}
+      {/* Scroll Below: HeroSnippet & PortfolioSection */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 2.6 }}
-        className="mt-8"
+        className="mt-24"
         style={{ minHeight: "520px" }}
       >
         <HeroSnippet />
       </motion.div>
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 2.6 }}
-        className="mt-8"
+        transition={{ duration: 0.6, delay: 3.0 }}
+        className="mt-16"
         style={{ minHeight: "520px" }}
       >
         <PortfolioSection />

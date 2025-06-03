@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { TerminalSquare, X, Minus, Square } from "lucide-react";
+import { TerminalSquare } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  VscLayoutPanelCenter,
+  VscLayoutPanelLeft,
+  VscLayoutPanelRight,
+} from "react-icons/vsc";
 
-const code = `// skills.ts
+const code = `// skills.js
 
 /**
  * Core skills organized by domain
  */
-interface Skill {
-  name: string;
-  category: "Frontend" | "Backend" | "Networking";
-}
-
-const skills: Skill[] = [
+const skills = [
   // Frontend Development
   { name: "React.js", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
@@ -32,8 +32,10 @@ const skills: Skill[] = [
 
 /**
  * Returns skill names filtered by category.
+ * @param {string} category - One of: "Frontend", "Backend", "Networking"
+ * @returns {string[]} Array of skill names
  */
-export function getSkillsByCategory(category: Skill["category"]): string[] {
+function getSkillsByCategory(category) {
   return skills
     .filter((skill) => skill.category === category)
     .map((skill) => skill.name);
@@ -41,7 +43,9 @@ export function getSkillsByCategory(category: Skill["category"]): string[] {
 
 // Example usage:
 console.log("Frontend Skills:", getSkillsByCategory("Frontend"));
+console.log("Backend Skills:", getSkillsByCategory("Backend"));
 console.log("Networking Skills:", getSkillsByCategory("Networking"));
+
 `;
 
 const HeroSnippet = () => {
@@ -61,7 +65,6 @@ const HeroSnippet = () => {
           "0 15px 40px -10px rgba(0, 0, 0, 0.7), 0 6px 10px -4px rgba(0, 0, 0, 0.5)",
       }}
     >
-      {/* Title Bar */}
       <header
         className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 rounded-t-xl select-none text-[0.85em] font-semibold tracking-wide"
         style={{
@@ -70,23 +73,40 @@ const HeroSnippet = () => {
           letterSpacing: "0.04em",
         }}
       >
+        {/* macOS window controls on left */}
         <div className="flex items-center space-x-2">
-          <TerminalSquare size={16} className="text-purple-400 flex-shrink-0" />
+          {/* red, yellow, green circles */}
           <span
-            className="ml-1 text-sm sm:text-base"
-            style={{ color: "#f8f8f2" }}
-          >
-            skills.ts — Visual Studio Code
+            aria-label="Close"
+            className="w-3 h-3 rounded-full bg-[#ff5f56] cursor-pointer"
+          />
+          <span
+            aria-label="Minimize"
+            className="w-3 h-3 rounded-full bg-[#ffbd2e] cursor-pointer"
+          />
+          <span
+            aria-label="Maximize"
+            className="w-3 h-3 rounded-full bg-[#27c93f] cursor-pointer"
+          />
+        </div>
+
+        {/* Terminal icon + file name */}
+        <div className="flex items-center space-x-2 flex-grow justify-center">
+          <TerminalSquare size={16} className="text-purple-400 flex-shrink-0" />
+          <span className="text-sm sm:text-base" style={{ color: "#f8f8f2" }}>
+            skills.js — Visual Studio Code
           </span>
         </div>
+
+        {/* Layout panel icons on right */}
         <div
           className="flex space-x-2 cursor-default"
           style={{ color: "#6272a4" }}
           aria-hidden="true"
         >
-          <Minus size={14} />
-          <Square size={14} />
-          <X size={14} />
+          <VscLayoutPanelLeft size={14} />
+          <VscLayoutPanelCenter size={14} />
+          <VscLayoutPanelRight size={14} />
         </div>
       </header>
 
@@ -106,7 +126,7 @@ const HeroSnippet = () => {
             borderBottom: "2px solid #ff79c6",
           }}
         >
-          skills.ts
+          skills.js
         </button>
       </nav>
 
@@ -171,30 +191,65 @@ const HeroSnippet = () => {
           </span>
         </div>
 
-        {/* Terminal Output */}
         <div
-          className={`overflow-y-auto px-3 sm:px-5 py-3 border-t transition-opacity duration-300 ease-in-out ${
+          className={`transition-opacity duration-300 ease-in-out rounded-md shadow-xl ring-1 ring-black/10 overflow-hidden ${
             showTerminal ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
           style={{
-            borderColor: "#6272a4",
             backgroundColor: "#282a36",
             color: "#f8f8f2",
+            fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, monospace",
             fontSize: "calc(var(--user-font-size, 1em) * 0.85)",
-            fontFamily: "monospace",
             lineHeight: 1.6,
-            letterSpacing: "0.03em",
-            whiteSpace: "pre-wrap",
-            maxHeight: "18vh",
+            letterSpacing: "0.02em",
           }}
           aria-live="polite"
         >
-          <div className="space-y-1 select-text text-[0.9em] sm:text-[1em]">
-            <div>Frontend Skills: React.js, TypeScript, Tailwind CSS</div>
-            <div>Backend Skills: Node.js, Express.js, RESTful API Design</div>
-            <div>
-              Networking Skills: TCP/IP Fundamentals, Subnetting &amp; VLAN
-              Configuration, Network Security (Firewalls, VPNs)
+          {/* Terminal Header */}
+          <div
+            className="flex items-center h-8 px-3 border-b border-[rgba(255,255,255,0.1)] bg-[#21222C]"
+            style={{ fontSize: "0.75rem" }}
+          >
+            <div className="flex space-x-2 mr-4">
+              <span className="h-3 w-3 rounded-full bg-red-500" />
+              <span className="h-3 w-3 rounded-full bg-yellow-400" />
+              <span className="h-3 w-3 rounded-full bg-green-500" />
+            </div>
+            <span className="text-xs text-gray-400">bash — 80x24</span>
+          </div>
+
+          {/* Terminal Body */}
+          <div
+            className="overflow-y-auto px-4 py-3 scroll-smooth scrollbar-hide"
+            style={{ maxHeight: "22vh", whiteSpace: "pre-wrap" }}
+          >
+            <div className="space-y-1 select-text text-sm">
+              <div>
+                <span className="text-[#50fa7b]">aj@dev-machine</span>
+                <span className="text-white">:</span>
+                <span className="text-[#8be9fd]">~/projects/portfolio</span>
+                <span className="text-white">$</span>{" "}
+                <span className="text-white">node skills.ts</span>
+              </div>
+              <div>
+                <span className="text-[#f1fa8c]">Frontend Skills</span>:{" "}
+                {`['React.js', 'TypeScript', 'Tailwind CSS']`}
+              </div>
+              <div>
+                <span className="text-[#f1fa8c]">Backend Skills</span>:{" "}
+                {`['Node.js', 'Express.js', 'RESTful API Design']`}
+              </div>
+              <div>
+                <span className="text-[#f1fa8c]">Networking Skills</span>:{" "}
+                {`['TCP/IP Fundamentals', 'Subnetting & VLAN Configuration', 'Network Security (Firewalls, VPNs)']`}
+              </div>
+              <div>
+                <span className="text-[#50fa7b]">aj@dev-machine</span>
+                <span className="text-white">:</span>
+                <span className="text-[#8be9fd]">~/projects/portfolio</span>
+                <span className="text-white">$</span>{" "}
+                <span className="text-white blink">█</span>
+              </div>
             </div>
           </div>
         </div>

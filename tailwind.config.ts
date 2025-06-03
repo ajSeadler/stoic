@@ -35,6 +35,17 @@ const config: Config = {
       borderColor: {
         border: "rgb(var(--border) / <alpha-value>)",
       },
+
+      // Add blinking keyframes and animation here:
+      keyframes: {
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+      },
+      animation: {
+        blink: "blink 1.2s steps(2, start) infinite",
+      },
     },
   },
   plugins: [
