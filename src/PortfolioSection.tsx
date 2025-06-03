@@ -15,36 +15,34 @@ interface Project {
 const projects: Project[] = [
   {
     id: "proj1",
-    title: "PixelPerfect UI Kit",
+    title: "Explore Parks",
     description:
-      "A design system focused on accessibility, pixel precision, and performance.",
+      "A sophisticated trip planner for U.S. National Parks, crafted to help users effortlessly discover, organize, and customize their outdoor adventures with an intuitive React and TypeScript-powered interface.",
     techStack: ["React", "TypeScript", "TailwindCSS", "Storybook"],
     demoUrl: "https://example.com/pixelperfect",
     repoUrl: "https://github.com/username/pixelperfect-ui",
-    imageSrc:
-      "https://blitapp.com/blog/articles/automated-website-screenshots-for-your-business/blit_shots.png",
+    imageSrc: "/images/nps.png",
   },
+
   {
     id: "proj2",
-    title: "Performance Optimizer",
+    title: "Skate Spot Social",
     description:
-      "Tooling and techniques to boost frontend web app speed and SEO.",
-    techStack: ["Next.js", "Vercel", "Lighthouse", "React Profiler"],
-    demoUrl: "https://example.com/performance",
-    repoUrl: "https://github.com/username/performance-optimizer",
-    imageSrc:
-      "https://www.sliderrevolution.com/wp-content/uploads/2021/09/Digeco.jpg",
+      "A dynamic React Native app where skateboarding enthusiasts can discover local skate spots, share photos and posts, and connect with the community—all optimized for seamless performance and smooth user experience.",
+    techStack: ["React Native", "Expo", "Firebase", "React Navigation"],
+    demoUrl: "https://example.com/skatespot-social",
+    repoUrl: "https://github.com/username/skatespot-social",
+    imageSrc: "/images/skate-social.png",
   },
   {
     id: "proj3",
-    title: "Accessibility Toolkit",
+    title: "OKC Clean Skateparks",
     description:
-      "Set of utilities to improve web accessibility and compliance with WCAG.",
+      "A localized platform connecting Oklahoma City skate park enthusiasts with upcoming cleanup events and community initiatives. Users can discover park details, stay informed through event notifications, and subscribe to newsletters tailored specifically for the OKC skateboarding community.",
     techStack: ["React", "ARIA", "Jest", "Cypress"],
     demoUrl: "https://example.com/accessibility",
     repoUrl: "https://github.com/username/accessibility-toolkit",
-    imageSrc:
-      "https://www.sliderrevolution.com/wp-content/uploads/2021/09/Jumpx.jpg",
+    imageSrc: "/images/okcs.png",
   },
 ];
 
