@@ -1,7 +1,6 @@
 import React from "react";
 import AppSidebar from "./AppSidebar";
 import { useTheme } from "./useTheme";
-import { SidebarOpen, SidebarClose } from "lucide-react";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -36,7 +35,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         `}
       >
         {/* Sidebar toggle button for mobile */}
-        <button
+        {/* <button
           onClick={toggleSidebar}
           aria-label={sidebarCollapsed ? "Open menu" : "Close menu"}
           className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-full shadow transition"
@@ -56,7 +55,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
               style={{ color: "rgb(var(--copy-primary))" }}
             />
           )}
-        </button>
+        </button> */}
 
         {/* Main content area */}
         <main className="flex-1 flex justify-center items-center w-full h-full">

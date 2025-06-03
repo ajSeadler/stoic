@@ -97,7 +97,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
             aria-expanded={desktopOpen}
             type="button"
             className="ml-auto p-2 rounded-full hover:bg-[rgba(var(--cta),0.2)] transition-colors
-              focus:outline-none focus:ring-2 focus:ring-[rgb(var(--cta))] focus:ring-offset-2"
+              focus:outline-none focus:ring-2 focus:ring-[rgb(var(--cta))] focus:ring-offset-2 "
           >
             {collapsed ? (
               <SidebarOpen

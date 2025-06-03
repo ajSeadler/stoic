@@ -30,21 +30,6 @@ const HeroSnippet = () => {
       >
         <div className="flex items-center space-x-3">
           <span
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: "#f56565" }}
-            aria-label="Close"
-          />
-          <span
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: "#ecc94b" }}
-            aria-label="Minimize"
-          />
-          <span
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: "#48bb78" }}
-            aria-label="Maximize"
-          />
-          <span
             className="ml-5 tracking-wide font-semibold select-text"
             style={{ color: "var(--copy)" }}
           >
@@ -73,7 +58,7 @@ const HeroSnippet = () => {
             type="button"
             className={`flex-1 px-5 py-3 text-sm font-semibold tracking-wide transition-colors duration-200 focus:outline-none ${
               i === 0
-                ? "bg-[var(--bg-card)] text-[var(--copy)] border-b-2 border-green-500 shadow-[inset_0_-2px_0_0_rgb(72,187,120)]"
+                ? "bg-[var(--bg-card)] text-[var(--copy)] border-b-2 border-[rgb(var(--cta))]"
                 : "text-[var(--copy-secondary)] hover:bg-[var(--bg-card)] hover:text-[var(--copy)]"
             }`}
             aria-current={i === 0 ? "page" : undefined}
@@ -105,7 +90,7 @@ const HeroSnippet = () => {
           {`// skills.ts
 
 /**
- * Core skills split by domain
+ * Core skills organized by domain
  */
 interface Skill {
   name: string;
@@ -113,22 +98,29 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: "React", category: "Frontend" },
+  // Frontend Development
+  { name: "React.js", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
-  { name: "CSS", category: "Frontend" },
+  { name: "Tailwind CSS", category: "Frontend" },
+
+  // Backend Development
   { name: "Node.js", category: "Backend" },
-  { name: "Express", category: "Backend" },
-  { name: "Performance Optimization", category: "Backend" },
-  { name: "Network Protocols", category: "Networking" },
-  { name: "STP (Spanning Tree Protocol)", category: "Networking" },
-  { name: "UDP Cable Configuration", category: "Networking" },
+  { name: "Express.js", category: "Backend" },
+  { name: "RESTful API Design", category: "Backend" },
+
+  // Networking & Infrastructure
+  { name: "TCP/IP Fundamentals", category: "Networking" },
+  { name: "Subnetting & VLAN Configuration", category: "Networking" },
+  { name: "Network Security (Firewalls, VPNs)", category: "Networking" },
 ];
 
 /**
- * Returns skills filtered by category.
+ * Returns skill names filtered by category.
  */
 export function getSkillsByCategory(category: Skill["category"]): string[] {
-  return skills.filter(skill => skill.category === category).map(skill => skill.name);
+  return skills
+    .filter((skill) => skill.category === category)
+    .map((skill) => skill.name);
 }
 
 // Example usage:
@@ -183,13 +175,11 @@ console.log("Networking Skills:", getSkillsByCategory("Networking"));
           aria-live="polite"
         >
           <div className="space-y-1 select-text">
-            <div>Frontend Skills: React, TypeScript, CSS</div>
+            <div>Frontend Skills: React.js, TypeScript, Tailwind CSS</div>
+            <div>Backend Skills: Node.js, Express.js, RESTful API Design</div>
             <div>
-              Backend Skills: Node.js, Express, Performance Optimization
-            </div>
-            <div>
-              Networking Skills: Network Protocols, STP (Spanning Tree
-              Protocol), UDP Cable Configuration
+              Networking Skills: TCP/IP Fundamentals, Subnetting &amp; VLAN
+              Configuration, Network Security (Firewalls, VPNs)
             </div>
           </div>
         </div>
