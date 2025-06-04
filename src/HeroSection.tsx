@@ -5,10 +5,9 @@ import HeroSnippet from "./HeroSnippet";
 import PortfolioSection from "./PortfolioSection";
 
 const TYPEWRITER_WORDS = [
-  "Frontend Engineer",
-  "UI/UX Aficionado",
-  "Performance Optimizer",
-  "Accessibility Advocate",
+  "Full-Stack Developer",
+  "Network Engineer",
+  "Cybersecurity Student",
 ];
 
 const HeroSection = () => {
@@ -89,9 +88,10 @@ const HeroSection = () => {
           className="text-[rgb(var(--copy-secondary))] leading-relaxed max-w-xl"
           style={{ fontSize: "1em" }}
         >
-          Crafting pixel-perfect, accessible, and high-performance web apps
-          using React, TypeScript, and cutting-edge design systems. Let’s build
-          something amazing.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
+          recusandae eligendi hic ut delectus, esse ullam magni assumenda
+          asperiores. Blanditiis voluptatem delectus quae voluptate velit ea
+          quis laborum iusto neque.
         </motion.p>
 
         <motion.div
