@@ -33,12 +33,30 @@ const FontSizeControl = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3 p-4 rounded-2xl bg-card border border-border shadow-sm w-full max-w-sm">
+    <div
+      className="flex flex-col gap-3 p-4 rounded-2xl border shadow-sm w-full max-w-sm"
+      style={{
+        backgroundColor: "rgb(var(--card))",
+        borderColor: "rgb(var(--border))",
+      }}
+    >
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-copy">Font Size</h2>
+        <h2
+          className="text-sm font-semibold"
+          style={{ color: "rgb(var(--copy))" }}
+        >
+          Font Size
+        </h2>
         <button
           onClick={handleReset}
-          className="flex items-center text-copy-secondary hover:text-cta transition text-sm gap-1"
+          className="flex items-center text-sm gap-1 transition cursor-pointer"
+          style={{ color: "rgb(var(--copy-secondary))" }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.color = "rgb(var(--cta))")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.color = "rgb(var(--copy-secondary))")
+          }
           aria-label="Reset font size"
         >
           <RotateCcw size={16} className="stroke-[2.5]" />
@@ -55,9 +73,15 @@ const FontSizeControl = () => {
           step={1}
           value={fontSize}
           onChange={handleChange}
-          className="w-full accent-cta"
+          className="w-full cursor-pointer"
+          style={{
+            accentColor: "rgb(var(--cta))",
+          }}
         />
-        <span className="text-sm text-copy-secondary w-10 text-right">
+        <span
+          className="text-sm w-10 text-right"
+          style={{ color: "rgb(var(--copy-secondary))" }}
+        >
           {fontSize}px
         </span>
       </div>
