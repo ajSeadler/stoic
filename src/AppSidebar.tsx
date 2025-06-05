@@ -3,7 +3,12 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import FontSizeControl from "./FontSizeControl";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { VscLayoutPanelLeft, VscLayoutPanelRight } from "react-icons/vsc";
+import {
+  VscLayoutPanelLeft,
+  VscLayoutPanelRight,
+  VscSplitHorizontal,
+  VscSplitVertical,
+} from "react-icons/vsc";
 
 interface AppSidebarProps {
   theme: string;
@@ -39,7 +44,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // “open” = not collapsed
+  // "open" = not collapsed
   const desktopOpen = !collapsed;
   const mobileOpen = !collapsed && !isDesktop;
 
@@ -107,7 +112,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
     `;
   }
 
-  // Determine if we’re in a horizontal “strip” mode (top/bottom) or a vertical sidebar (left/right)
+  // Determine if we're in a horizontal "strip" mode (top/bottom) or a vertical sidebar (left/right)
   const isHorizontal = position === "top" || position === "bottom";
 
   return (
@@ -131,7 +136,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
             px-4 border-b border-[rgb(var(--border))] select-none
           `}
         >
-          {/* Show “aj.dev” text only when open (desktopOpen or mobileOpen) */}
+          {/* Show "aj.dev" text only when open (desktopOpen or mobileOpen) */}
           {(desktopOpen || mobileOpen) && (
             <span
               className="text-xl font-bold truncate"
@@ -169,7 +174,9 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
         {(isDesktop || mobileOpen) && (
           <nav
             className={`flex-1 overflow-y-auto ${
-              isHorizontal ? "mt-4 pt-2" : "mt-6 pt-2"
+              isHorizontal
+                ? "flex flex-row justify-center items-center gap-4 mt-4 pt-2"
+                : "mt-6 pt-2"
             }`}
             aria-label="Primary navigation"
           >
@@ -180,7 +187,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   key={to}
                   to={to}
                   className={`
-                    relative z-10 group flex items-center overflow-hidden
+                    relative z-10 group flex items-center overflow-hidden m-1
                     ${
                       collapsed
                         ? "justify-center px-0 py-3"
@@ -244,7 +251,13 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
 
         {/* ───────── Position‐Picker Icons (visible whenever header is at least h-16) ───────── */}
         {(isDesktop || mobileOpen) && (
-          <div className="flex flex-col items-start gap-3 px-4 py-3 border-t border-[rgb(var(--border))]">
+          <div
+            className={`flex ${
+              isHorizontal
+                ? "flex-row justify-center items-center gap-3"
+                : "flex-col items-start gap-3"
+            } px-4 py-3 border-t border-[rgb(var(--border))]`}
+          >
             <button
               onClick={() => setPosition("left")}
               aria-label="Move sidebar to left"
@@ -273,6 +286,36 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
       `}
             >
               <VscLayoutPanelLeft className="w-6 h-6 text-[rgb(var(--cta))]" />
+            </button>
+
+            <button
+              onClick={() => setPosition("top")}
+              aria-label="Move sidebar to top"
+              className={`
+        p-2 rounded-full transition-colors
+        ${
+          position === "top"
+            ? "bg-[rgb(var(--background))]"
+            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+        }
+      `}
+            >
+              <VscSplitHorizontal className="w-6 h-6 text-[rgb(var(--cta))]" />
+            </button>
+
+            <button
+              onClick={() => setPosition("bottom")}
+              aria-label="Move sidebar to bottom"
+              className={`
+        p-2 rounded-full transition-colors
+        ${
+          position === "bottom"
+            ? "bg-[rgb(var(--background))]"
+            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+        }
+      `}
+            >
+              <VscSplitVertical className="w-6 h-6 text-[rgb(var(--cta))]" />
             </button>
           </div>
         )}

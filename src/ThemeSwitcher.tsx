@@ -100,7 +100,7 @@ const themeColors: Record<
 const themes = Object.keys(themeColors);
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   // On mount, read from localStorage
   useEffect(() => {
