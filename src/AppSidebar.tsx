@@ -1,4 +1,4 @@
-import { SidebarOpen, SidebarClose, Home, User } from "lucide-react";
+import { SidebarOpen, SidebarClose, Home, User, Briefcase } from "lucide-react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import FontSizeControl from "./FontSizeControl";
 import { useEffect, useState } from "react";
@@ -27,6 +27,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
   const links = [
     { to: "/", label: "Home", Icon: Home },
     { to: "/about", label: "About Me", Icon: User },
+    { to: "/portfolio", label: "Portfolio", Icon: Briefcase },
   ];
 
   const [isDesktop, setIsDesktop] = useState(false);
@@ -179,7 +180,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   key={to}
                   to={to}
                   className={`
-                    relative z-10 group flex items-center
+                    relative z-10 group flex items-center overflow-hidden
                     ${
                       collapsed
                         ? "justify-center px-0 py-3"
@@ -243,7 +244,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
 
         {/* ───────── Position‐Picker Icons (visible whenever header is at least h-16) ───────── */}
         {(isDesktop || mobileOpen) && (
-          <div className="flex flex-col items-center gap-3 px-4 py-3 border-t border-[rgb(var(--border))]">
+          <div className="flex flex-col items-start gap-3 px-4 py-3 border-t border-[rgb(var(--border))]">
             <button
               onClick={() => setPosition("left")}
               aria-label="Move sidebar to left"

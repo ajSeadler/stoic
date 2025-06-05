@@ -29,7 +29,7 @@ interface GitHubRepo {
 
 const GITHUB_USERNAME = "ajSeadler";
 
-const AboutMe = () => {
+const GithubStats = () => {
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -394,4 +394,4 @@ const RepoCard = ({
   </a>
 );
 
-export default AboutMe;
+export default GithubStats;

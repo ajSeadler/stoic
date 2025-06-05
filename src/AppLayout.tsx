@@ -64,7 +64,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       <button
         onClick={toggleSidebar}
         aria-label={sidebarCollapsed ? "Open menu" : "Close menu"}
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-full shadow"
+        className="md:hidden z-50 p-5 rounded-full shadow bg-rgb(var(--cta))"
       >
         {sidebarCollapsed ? (
           <SidebarOpen

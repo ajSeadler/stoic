@@ -23,7 +23,6 @@ const projects: Project[] = [
     repoUrl: "https://github.com/username/pixelperfect-ui",
     imageSrc: "/images/nps.png",
   },
-
   {
     id: "proj2",
     title: "Skate Spot Social",
@@ -48,75 +47,76 @@ const projects: Project[] = [
 
 const PortfolioSection: React.FC = () => {
   return (
-    <section className="flex flex-col gap-16 w-full">
+    <section
+      className="flex flex-col gap-24 w-full"
+      style={{ fontSize: "var(--user-font-size)" }}
+    >
       {projects.map((project, idx) => {
         const isEven = idx % 2 === 0;
         return (
-          <div
+          <article
             key={project.id}
             className={`
-              flex flex-col md:flex-row items-center
-              bg-[rgb(var(--card))]
+              flex flex-col md:flex-row items-center gap-8
+              ${isEven ? "" : "md:flex-row-reverse"}
+              rounded-2xl overflow-hidden bg-[rgb(var(--card))]
               border border-[rgb(var(--border))]
-              rounded-2xl overflow-hidden shadow-md
-              ${isEven ? "md:flex-row" : "md:flex-row-reverse"}
+              shadow-[0_4px_20px_rgba(0,0,0,0.05)]
             `}
           >
-            {/* Project Image */}
-            <div className="w-full md:w-1/2 h-48 md:h-auto flex-shrink-0">
+            {/* Image */}
+            <div className="w-full md:w-1/2 h-64 md:h-96 overflow-hidden">
               <img
                 src={project.imageSrc}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
 
-            {/* Project Content */}
-            <div className="w-full md:w-1/2 p-6 flex flex-col">
-              <h3 className="text-2xl font-semibold text-[rgb(var(--copy))]">
+            {/* Text Content */}
+            <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-[rgb(var(--copy))]">
+              <h3 className="text-[calc(var(--user-font-size)*1.8)] font-bold leading-snug">
                 {project.title}
               </h3>
-              <p className="mt-2 text-[rgb(var(--copy))]">
+              <p className="mt-4 leading-relaxed text-[rgb(var(--copy-secondary))]">
                 {project.description}
               </p>
 
-              {/* Tech Stack Badges */}
-              <div className="mt-4 flex flex-wrap">
+              <ul className="mt-6 flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
-                  <span
+                  <li
                     key={tech}
-                    className="inline-block text-sm text-[rgb(var(--copy-secondary))] border border-[rgb(var(--border))] rounded-full py-1 px-2 mr-2 mb-2"
+                    className="px-3 py-1 text-xs border border-[rgb(var(--border))] rounded-full bg-[rgba(var(--border),0.05)] text-[rgb(var(--copy-secondary))]"
                   >
                     {tech}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              {/* Links */}
-              <div className="mt-6 flex flex-wrap items-center gap-4">
+              <div className="mt-6 flex gap-4 flex-wrap">
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-[rgb(var(--cta))] hover:text-[rgb(var(--cta-active))] transition text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[rgb(var(--cta))] hover:text-[rgb(var(--cta-active))] transition"
                   aria-label={`View live demo of ${project.title}`}
                 >
-                  <ExternalLink size={16} className="mr-2 stroke-[2]" />
+                  <ExternalLink size={16} className="stroke-[2]" />
                   Live Demo
                 </a>
                 <a
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-[rgb(var(--cta))] hover:text-[rgb(var(--cta-active))] transition text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[rgb(var(--cta))] hover:text-[rgb(var(--cta-active))] transition"
                   aria-label={`View GitHub repository of ${project.title}`}
                 >
-                  <DiGithub size={16} className="mr-2 stroke-[2]" />
+                  <DiGithub size={18} className="stroke-[2]" />
                   Source Code
                 </a>
               </div>
             </div>
-          </div>
+          </article>
         );
       })}
     </section>

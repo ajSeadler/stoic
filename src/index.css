@@ -35,6 +35,21 @@
   animation: blink 1s step-start infinite;
 }
 
+/* Hide scrollbars globally */
+html,
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer/Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
 
 
 /* === LIGHT THEME === */
@@ -55,6 +70,68 @@
   /* Darker purple */
   --cta-text: 255, 255, 255;
   /* White on buttons */
+  --font-size-base: 16px;
+}
+
+.redlight {
+  --background: 245, 245, 245;
+  /* Soft warm light gray */
+  --border: 212, 212, 212;
+  /* Light gray border */
+  --card: 255, 255, 255;
+  /* White card */
+  --copy-primary: 23, 23, 23;
+  /* Dark text */
+  --copy-secondary: 115, 115, 115;
+  /* Medium gray text */
+  --cta: 239, 68, 68;
+  /* roughly #EF4444 */
+  /* Muted purple */
+  --cta-active: 124, 58, 237;
+  /* Darker purple */
+  --cta-text: 255, 255, 255;
+  /* White on buttons */
+  --font-size-base: 16px;
+}
+
+.greenlight {
+  --background: 245, 245, 245;
+  /* Soft warm light gray */
+  --border: 212, 212, 212;
+  /* Light gray border */
+  --card: 255, 255, 255;
+  /* White card */
+  --copy-primary: 23, 23, 23;
+  /* Dark text */
+  --copy-secondary: 115, 115, 115;
+  /* Medium gray text */
+  --cta: 16, 73, 17;
+  /* roughly #EF4444 */
+  /* Muted purple */
+  --cta-active: 124, 58, 237;
+  /* Darker purple */
+  --cta-text: 255, 255, 255;
+  /* White on buttons */
+  --font-size-base: 16px;
+}
+
+.greendark {
+  --background: 20, 20, 20;
+  /* Very dark gray background */
+  --border: 50, 50, 50;
+  /* Darker border */
+  --card: 30, 30, 30;
+  /* Dark card background */
+  --copy-primary: 230, 230, 230;
+  /* Light gray text */
+  --copy-secondary: 150, 150, 150;
+  /* Medium gray text */
+  --cta: 239, 68, 68;
+  /* Slightly desaturated purple */
+  --cta-active: 100, 80, 200;
+  /* Darker purple for hover */
+  --cta-text: 255, 255, 255;
+  /* White text */
   --font-size-base: 16px;
 }
 

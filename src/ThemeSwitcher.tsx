@@ -21,6 +21,26 @@ const themeColors: Record<
     card: "rgb(30, 30, 30)",
     cta: "rgb(120, 100, 230)",
   },
+
+  redlight: {
+    background: "rgb(245, 245, 245)", // matches --background: 245,245,245
+    border: "rgb(212, 212, 212)", // matches --border: 212,212,212
+    card: "rgb(255, 255, 255)", // matches --card: 255,255,255
+    cta: "rgb(239, 68, 68)", // matches --cta: 239,68,68
+  },
+  greendark: {
+    background: "rgb(20, 20, 20)", // from --background: 20,20,20
+    border: "rgb(50, 50, 50)", // from --border: 50,50,50
+    card: "rgb(30, 30, 30)", // from --card: 30,30,30
+    cta: "rgb(239, 68, 68)", // matches --cta: 239,68,68
+  },
+  greenlight: {
+    background: "rgb(245, 245, 245)", // from --background: 245,245,245
+    border: "rgb(212, 212, 212)", // from --border: 212,212,212
+    card: "rgb(255, 255, 255)", // from --card: 255,255,255
+    cta: "rgb(16, 73, 17)", // from --cta: 16,73,17
+  },
+
   forest: {
     background: "rgb(15, 30, 15)",
     border: "rgb(30, 50, 30)",
