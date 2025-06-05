@@ -54,7 +54,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
   let wrapperClass = `
     fixed z-50
     bg-[rgb(var(--card))] border-[rgb(var(--border))] shadow-lg
-    flex flex-col transition-all duration-300 ease-in-out
+    flex flex-col transition-all duration-300 ease-in-out overflow-auto
   `;
 
   if (position === "left") {
@@ -95,6 +95,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           ? "h-72 translate-y-0"
           : "h-0 -translate-y-full"
       }
+      ${collapsed ? "h-16" : ""}
     `;
   } else {
     // position === "bottom"
@@ -109,6 +110,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           ? "h-72 translate-y-0"
           : "h-0 translate-y-full"
       }
+      ${collapsed ? "h-16" : ""}
     `;
   }
 
@@ -134,6 +136,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           className={`
             flex items-center h-16
             px-4 border-b border-[rgb(var(--border))] select-none
+            ${isHorizontal ? "justify-between" : ""}
           `}
         >
           {/* Show "aj.dev" text only when open (desktopOpen or mobileOpen) */}
@@ -170,153 +173,178 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           </button>
         </div>
 
-        {/* ───────── Navigation (always vertical) ───────── */}
-        {(isDesktop || mobileOpen) && (
-          <nav
-            className={`flex-1 overflow-y-auto ${
-              isHorizontal
-                ? "flex flex-row justify-center items-center gap-4 mt-4 pt-2"
-                : "mt-6 pt-2"
-            }`}
-            aria-label="Primary navigation"
-          >
-            {links.map(({ to, label, Icon }) => {
-              const isActive = location.pathname === to;
-              return (
-                <Link
-                  key={to}
-                  to={to}
-                  className={`
-                    relative z-10 group flex items-center overflow-hidden m-1
-                    ${
-                      collapsed
-                        ? "justify-center px-0 py-3"
-                        : "px-4 py-3 gap-3 rounded-lg mx-2"
-                    }
-                    transition-colors duration-300 ease-in-out
-                    ${
-                      isActive
-                        ? "bg-[rgb(var(--cta))] text-[rgb(var(--card))] font-semibold shadow-md"
-                        : ""
-                    }
-                    hover:text-[rgb(var(--card))] hover:bg-[rgba(var(--cta),0.3)]
-                  `}
-                  aria-current={isActive ? "page" : undefined}
-                  tabIndex={0}
-                >
-                  <Icon
-                    className={`h-5 w-5 flex-shrink-0 ${
-                      collapsed ? "mx-auto" : ""
-                    }`}
-                    aria-hidden="true"
-                    style={{
-                      color: isActive ? "rgb(var(--card))" : "rgb(var(--cta))",
-                    }}
-                  />
-                  {!collapsed && (
-                    <span className="font-medium truncate">{label}</span>
-                  )}
-                  {collapsed && (
-                    <span
-                      className="
-                        absolute left-full ml-2 whitespace-nowrap
-                        bg-[rgb(var(--cta))] text-[rgb(var(--card))] p-1 rounded-md text-sm
-                        opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                        pointer-events-none shadow-lg
-                      "
-                      role="tooltip"
-                    >
-                      {label}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
-        )}
-
-        {/* ───────── Divider + Controls (only when vertical & open) ───────── */}
-        {!collapsed && !isHorizontal && (
-          <>
-            <div
-              className="border-t my-4"
-              style={{ borderColor: "rgb(var(--cta))" }}
-            />
-            <div className="px-4 space-y-4 mb-4">
-              <ThemeSwitcher theme={theme} setTheme={setTheme} />
-              <FontSizeControl />
-            </div>
-          </>
-        )}
-
-        {/* ───────── Position‐Picker Icons (visible whenever header is at least h-16) ───────── */}
+        {/* ───────── Main Content Area ───────── */}
         {(isDesktop || mobileOpen) && (
           <div
-            className={`flex ${
-              isHorizontal
-                ? "flex-row justify-center items-center gap-3"
-                : "flex-col items-start gap-3"
-            } px-4 py-3 border-t border-[rgb(var(--border))]`}
+            className={`
+            ${isHorizontal ? "flex items-center justify-between px-4" : ""}
+            ${isHorizontal && collapsed ? "h-0 overflow-hidden" : "flex-1"}
+          `}
           >
-            <button
-              onClick={() => setPosition("left")}
-              aria-label="Move sidebar to left"
+            {/* Navigation Links */}
+            <nav
               className={`
-        p-2 rounded-full transition-colors
-        ${
-          position === "left"
-            ? "bg-[rgb(var(--background))]"
-            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
-        }
-      `}
+                ${
+                  isHorizontal
+                    ? "flex flex-row items-center gap-2"
+                    : "mt-6 pt-2"
+                }
+                ${isHorizontal ? "flex-1" : "flex-1 overflow-y-auto"}
+              `}
+              aria-label="Primary navigation"
             >
-              <VscLayoutPanelRight className="w-6 h-6 text-[rgb(var(--cta))]" />
-            </button>
+              {links.map(({ to, label, Icon }) => {
+                const isActive = location.pathname === to;
+                return (
+                  <Link
+                    key={to}
+                    to={to}
+                    className={`
+                      relative z-10 group flex items-center overflow-hidden
+                      ${
+                        isHorizontal
+                          ? collapsed
+                            ? "px-2 py-2"
+                            : "px-3 py-2"
+                          : collapsed
+                          ? "justify-center px-0 py-3"
+                          : "px-4 py-3 gap-3 rounded-lg mx-2"
+                      }
+                      transition-colors duration-300 ease-in-out
+                      ${
+                        isActive
+                          ? "bg-[rgb(var(--cta))] text-[rgb(var(--card))] font-semibold shadow-md"
+                          : ""
+                      }
+                      hover:text-[rgb(var(--card))] hover:bg-[rgba(var(--cta),0.3)]
+                    `}
+                    aria-current={isActive ? "page" : undefined}
+                    tabIndex={0}
+                  >
+                    <Icon
+                      className={`h-5 w-5 flex-shrink-0 ${
+                        collapsed ? "mx-auto" : ""
+                      }`}
+                      aria-hidden="true"
+                      style={{
+                        color: isActive
+                          ? "rgb(var(--card))"
+                          : "rgb(var(--cta))",
+                      }}
+                    />
+                    {!collapsed && (
+                      <span className="font-medium truncate">{label}</span>
+                    )}
+                    {collapsed && !isHorizontal && (
+                      <span
+                        className="
+                          absolute left-full ml-2 whitespace-nowrap
+                          bg-[rgb(var(--cta))] text-[rgb(var(--card))] p-1 rounded-md text-sm
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                          pointer-events-none shadow-lg
+                        "
+                        role="tooltip"
+                      >
+                        {label}
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
 
-            <button
-              onClick={() => setPosition("right")}
-              aria-label="Move sidebar to right"
-              className={`
-        p-2 rounded-full transition-colors
-        ${
-          position === "right"
-            ? "bg-[rgb(var(--background))]"
-            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
-        }
-      `}
-            >
-              <VscLayoutPanelLeft className="w-6 h-6 text-[rgb(var(--cta))]" />
-            </button>
+            {/* Controls Section */}
+            {!collapsed && (
+              <div
+                className={`
+                ${
+                  isHorizontal
+                    ? "flex items-center gap-4"
+                    : "px-4 space-y-4 mb-4"
+                }
+                ${
+                  isHorizontal
+                    ? "border-l border-[rgb(var(--border))] pl-4"
+                    : ""
+                }
+              `}
+              >
+                <ThemeSwitcher theme={theme} setTheme={setTheme} />
+                <FontSizeControl />
+              </div>
+            )}
 
-            <button
-              onClick={() => setPosition("top")}
-              aria-label="Move sidebar to top"
+            {/* Position Picker */}
+            <div
               className={`
-        p-2 rounded-full transition-colors
-        ${
-          position === "top"
-            ? "bg-[rgb(var(--background))]"
-            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
-        }
-      `}
+              ${
+                isHorizontal
+                  ? "flex items-center gap-2"
+                  : "flex flex-col items-start gap-3 px-4 py-3 border-t border-[rgb(var(--border))]"
+              }
+              ${isHorizontal ? "border-l border-[rgb(var(--border))] pl-4" : ""}
+            `}
             >
-              <VscSplitHorizontal className="w-6 h-6 text-[rgb(var(--cta))]" />
-            </button>
+              <button
+                onClick={() => setPosition("left")}
+                aria-label="Move sidebar to left"
+                className={`
+                  p-2 rounded-full transition-colors
+                  ${
+                    position === "left"
+                      ? "bg-[rgb(var(--background))]"
+                      : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+                  }
+                `}
+              >
+                <VscLayoutPanelRight className="w-6 h-6 text-[rgb(var(--cta))]" />
+              </button>
 
-            <button
-              onClick={() => setPosition("bottom")}
-              aria-label="Move sidebar to bottom"
-              className={`
-        p-2 rounded-full transition-colors
-        ${
-          position === "bottom"
-            ? "bg-[rgb(var(--background))]"
-            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
-        }
-      `}
-            >
-              <VscSplitVertical className="w-6 h-6 text-[rgb(var(--cta))]" />
-            </button>
+              <button
+                onClick={() => setPosition("right")}
+                aria-label="Move sidebar to right"
+                className={`
+                  p-2 rounded-full transition-colors
+                  ${
+                    position === "right"
+                      ? "bg-[rgb(var(--background))]"
+                      : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+                  }
+                `}
+              >
+                <VscLayoutPanelLeft className="w-6 h-6 text-[rgb(var(--cta))]" />
+              </button>
+
+              <button
+                onClick={() => setPosition("top")}
+                aria-label="Move sidebar to top"
+                className={`
+                  p-2 rounded-full transition-colors
+                  ${
+                    position === "top"
+                      ? "bg-[rgb(var(--background))]"
+                      : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+                  }
+                `}
+              >
+                <VscSplitHorizontal className="w-6 h-6 text-[rgb(var(--cta))]" />
+              </button>
+
+              <button
+                onClick={() => setPosition("bottom")}
+                aria-label="Move sidebar to bottom"
+                className={`
+                  p-2 rounded-full transition-colors
+                  ${
+                    position === "bottom"
+                      ? "bg-[rgb(var(--background))]"
+                      : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+                  }
+                `}
+              >
+                <VscSplitVertical className="w-6 h-6 text-[rgb(var(--cta))]" />
+              </button>
+            </div>
           </div>
         )}
       </aside>
