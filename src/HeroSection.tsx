@@ -6,7 +6,7 @@ import PortfolioSection from "./PortfolioSection";
 
 const TYPEWRITER_WORDS = [
   "Full-Stack Developer",
-  "Network Engineer",
+  "Network Technician",
   "Cybersecurity Student",
 ];
 

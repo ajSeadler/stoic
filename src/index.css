@@ -85,10 +85,8 @@ body::-webkit-scrollbar {
   --copy-secondary: 115, 115, 115;
   /* Medium gray text */
   --cta: 239, 68, 68;
-  /* roughly #EF4444 */
-  /* Muted purple */
-  --cta-active: 124, 58, 237;
-  /* Darker purple */
+
+  --cta-active: 153, 45, 45;
   --cta-text: 255, 255, 255;
   /* White on buttons */
   --font-size-base: 16px;
@@ -115,7 +113,7 @@ body::-webkit-scrollbar {
   --font-size-base: 16px;
 }
 
-.greendark {
+.reddark {
   --background: 20, 20, 20;
   /* Very dark gray background */
   --border: 50, 50, 50;
@@ -128,7 +126,7 @@ body::-webkit-scrollbar {
   /* Medium gray text */
   --cta: 239, 68, 68;
   /* Slightly desaturated purple */
-  --cta-active: 100, 80, 200;
+  --cta-active: 153, 45, 45;
   /* Darker purple for hover */
   --cta-text: 255, 255, 255;
   /* White text */

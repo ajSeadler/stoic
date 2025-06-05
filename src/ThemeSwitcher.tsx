@@ -28,7 +28,7 @@ const themeColors: Record<
     card: "rgb(255, 255, 255)", // matches --card: 255,255,255
     cta: "rgb(239, 68, 68)", // matches --cta: 239,68,68
   },
-  greendark: {
+  reddark: {
     background: "rgb(20, 20, 20)", // from --background: 20,20,20
     border: "rgb(50, 50, 50)", // from --border: 50,50,50
     card: "rgb(30, 30, 30)", // from --card: 30,30,30

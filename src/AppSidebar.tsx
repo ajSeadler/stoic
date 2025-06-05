@@ -249,30 +249,30 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
               onClick={() => setPosition("left")}
               aria-label="Move sidebar to left"
               className={`
-                p-2 rounded-full transition-colors
-                ${
-                  position === "left"
-                    ? "bg-[rgb(var(--cta))] text-[rgb(var(--card))]"
-                    : "text-[rgb(var(--cta))] hover:bg-[rgba(var(--cta),0.2)]"
-                }
-              `}
+        p-2 rounded-full transition-colors
+        ${
+          position === "left"
+            ? "bg-[rgb(var(--background))]"
+            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+        }
+      `}
             >
-              <VscLayoutPanelRight className="w-6 h-6" />
+              <VscLayoutPanelRight className="w-6 h-6 text-[rgb(var(--cta))]" />
             </button>
 
             <button
               onClick={() => setPosition("right")}
               aria-label="Move sidebar to right"
               className={`
-                p-2 rounded-full transition-colors
-                ${
-                  position === "right"
-                    ? "bg-[rgb(var(--cta))] text-[rgb(var(--card))]"
-                    : "text-[rgb(var(--cta))] hover:bg-[rgba(var(--cta),0.2)]"
-                }
-              `}
+        p-2 rounded-full transition-colors
+        ${
+          position === "right"
+            ? "bg-[rgb(var(--background))]"
+            : "hover:bg-[rgba(var(--copy-secondary),0.1)]"
+        }
+      `}
             >
-              <VscLayoutPanelLeft className="w-6 h-6" />
+              <VscLayoutPanelLeft className="w-6 h-6 text-[rgb(var(--cta))]" />
             </button>
           </div>
         )}
