@@ -353,7 +353,6 @@ body::-webkit-scrollbar {
 
 input[type="range"].accent-cta {
   /* Base track styles */
-  -webkit-appearance: none;
   width: 100%;
   height: 6px;
   background: rgb(var(--border));
