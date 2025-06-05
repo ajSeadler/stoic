@@ -4,11 +4,11 @@ import FontSizeControl from "./FontSizeControl";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  VscLayoutPanelLeft,
-  VscLayoutPanelRight,
-  VscSplitHorizontal,
-  VscSplitVertical,
-} from "react-icons/vsc";
+  RiLayoutLeftLine,
+  RiLayoutRightLine,
+  RiLayoutTopLine,
+  RiLayoutBottomLine,
+} from "react-icons/ri";
 
 interface AppSidebarProps {
   theme: string;
@@ -136,7 +136,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           className={`
             flex items-center h-16
             px-4 border-b border-[rgb(var(--border))] select-none
-            ${isHorizontal ? "justify-between" : ""}
+            ${isHorizontal ? "justify-center" : "justify-between"}
           `}
         >
           {/* Show "aj.dev" text only when open (desktopOpen or mobileOpen) */}
@@ -150,27 +150,29 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
             </span>
           )}
 
-          <button
-            onClick={toggleCollapsed}
-            aria-label={desktopOpen ? "Collapse sidebar" : "Expand sidebar"}
-            aria-expanded={desktopOpen}
-            type="button"
-            className="ml-auto p-2 rounded-full hover:bg-[rgba(var(--cta),0.2)] transition-colors"
-          >
-            {collapsed ? (
-              <SidebarOpen
-                className="h-6 w-6"
-                style={{ color: "rgb(var(--cta))" }}
-                aria-hidden="true"
-              />
-            ) : (
-              <SidebarClose
-                className="h-6 w-6"
-                style={{ color: "rgb(var(--cta))" }}
-                aria-hidden="true"
-              />
-            )}
-          </button>
+          {!isHorizontal && (
+            <button
+              onClick={toggleCollapsed}
+              aria-label={desktopOpen ? "Collapse sidebar" : "Expand sidebar"}
+              aria-expanded={desktopOpen}
+              type="button"
+              className="ml-auto p-2 rounded-full hover:bg-[rgba(var(--cta),0.2)] transition-colors"
+            >
+              {collapsed ? (
+                <SidebarOpen
+                  className="h-6 w-6"
+                  style={{ color: "rgb(var(--cta))" }}
+                  aria-hidden="true"
+                />
+              ) : (
+                <SidebarClose
+                  className="h-6 w-6"
+                  style={{ color: "rgb(var(--cta))" }}
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          )}
         </div>
 
         {/* ───────── Main Content Area ───────── */}
@@ -178,7 +180,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           <div
             className={`
             ${isHorizontal ? "flex items-center justify-between px-4" : ""}
-            ${isHorizontal && collapsed ? "h-0 overflow-hidden" : "flex-1"}
+            ${isHorizontal && collapsed ? "h-16" : "flex-1"}
           `}
           >
             {/* Navigation Links */}
@@ -274,7 +276,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
               </div>
             )}
 
-            {/* Position Picker */}
+            {/* Position Picker and Toggle (for horizontal) */}
             <div
               className={`
               ${
@@ -285,6 +287,32 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
               ${isHorizontal ? "border-l border-[rgb(var(--border))] pl-4" : ""}
             `}
             >
+              {isHorizontal && (
+                <button
+                  onClick={toggleCollapsed}
+                  aria-label={
+                    desktopOpen ? "Collapse sidebar" : "Expand sidebar"
+                  }
+                  aria-expanded={desktopOpen}
+                  type="button"
+                  className="p-2 rounded-full hover:bg-[rgba(var(--cta),0.2)] transition-colors"
+                >
+                  {collapsed ? (
+                    <SidebarOpen
+                      className="h-6 w-6"
+                      style={{ color: "rgb(var(--cta))" }}
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <SidebarClose
+                      className="h-6 w-6"
+                      style={{ color: "rgb(var(--cta))" }}
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+              )}
+
               <button
                 onClick={() => setPosition("left")}
                 aria-label="Move sidebar to left"
@@ -297,7 +325,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   }
                 `}
               >
-                <VscLayoutPanelRight className="w-6 h-6 text-[rgb(var(--cta))]" />
+                <RiLayoutLeftLine className="w-6 h-6 text-[rgb(var(--cta))]" />
               </button>
 
               <button
@@ -312,7 +340,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   }
                 `}
               >
-                <VscLayoutPanelLeft className="w-6 h-6 text-[rgb(var(--cta))]" />
+                <RiLayoutRightLine className="w-6 h-6 text-[rgb(var(--cta))]" />
               </button>
 
               <button
@@ -327,7 +355,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   }
                 `}
               >
-                <VscSplitHorizontal className="w-6 h-6 text-[rgb(var(--cta))]" />
+                <RiLayoutTopLine className="w-6 h-6 text-[rgb(var(--cta))]" />
               </button>
 
               <button
@@ -342,7 +370,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   }
                 `}
               >
-                <VscSplitVertical className="w-6 h-6 text-[rgb(var(--cta))]" />
+                <RiLayoutBottomLine className="w-6 h-6 text-[rgb(var(--cta))]" />
               </button>
             </div>
           </div>
