@@ -190,7 +190,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                     ${
                       isActive
                         ? "bg-[rgb(var(--cta))] text-[rgb(var(--card))] font-semibold shadow-md"
-                        : "text-[rgb(var(--cta))]"
+                        : ""
                     }
                     hover:text-[rgb(var(--card))] hover:bg-[rgba(var(--cta),0.3)]
                   `}
