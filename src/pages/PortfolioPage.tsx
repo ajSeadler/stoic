@@ -33,8 +33,8 @@ const PortfolioPage = () => {
                 lineHeight: "1.6",
               }}
             >
-              A collection of full-stack and frontend builds showcasing modern
-              web development and cybersecurity expertise
+              A collection of full-stack and frontend builds I have developed
+              recently.
             </p>
           </motion.div>
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Rocket } from "lucide-react";
-import HeroSnippet from "./HeroSnippet";
+// import HeroSnippet from "./HeroSnippet";
 import PortfolioSection from "./PortfolioSection";
 
 const TYPEWRITER_WORDS = [
@@ -139,7 +139,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Below: HeroSnippet & PortfolioSection */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 2.6 }}
@@ -147,7 +147,7 @@ const HeroSection = () => {
         style={{ minHeight: "520px" }}
       >
         <HeroSnippet />
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}

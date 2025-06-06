@@ -49,14 +49,13 @@ const AboutMePage: React.FC = () => {
         {/* ── Bio */}
         <div className="w-full space-y-3 text-[rgb(var(--copy-secondary))] leading-relaxed text-[0.875rem] sm:text-base">
           <p>
-            I’m a full-stack developer and cybersecurity enthusiast who builds
-            scalable, secure applications. Currently pursuing my cybersecurity
-            bachelor’s while honing skills in React, Node.js, and network
-            security.
+            I’m a full-stack developer and network technician. Currently
+            pursuing my cybersecurity bachelor’s while honing skills in React,
+            Node.js, and network security, particularly NSM.
           </p>
           <p>
-            When I’m not coding or studying, you’ll find me skating, exploring
-            national parks, or digging into the latest tech trends.
+            When I’m not coding or studying, you’ll find me skateboarding,
+            hiking/backpacking, or digging into the latest tech trends.
           </p>
         </div>
 
