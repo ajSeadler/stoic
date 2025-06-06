@@ -24,31 +24,40 @@ const themeColors: Record<
     cta: "rgb(120, 100, 230)",
   },
 
+  // Color Accent Themes
   redlight: {
-    background: "rgb(245, 245, 245)", // matches --background: 245,245,245
-    border: "rgb(212, 212, 212)", // matches --border: 212,212,212
-    card: "rgb(255, 255, 255)", // matches --card: 255,255,255
-    cta: "rgb(239, 68, 68)", // matches --cta: 239,68,68
+    background: "rgb(245, 245, 245)",
+    border: "rgb(212, 212, 212)",
+    card: "rgb(255, 255, 255)",
+    cta: "rgb(239, 68, 68)",
   },
   reddark: {
-    background: "rgb(20, 20, 20)", // from --background: 20,20,20
-    border: "rgb(50, 50, 50)", // from --border: 50,50,50
-    card: "rgb(30, 30, 30)", // from --card: 30,30,30
-    cta: "rgb(239, 68, 68)", // matches --cta: 239,68,68
+    background: "rgb(20, 20, 20)",
+    border: "rgb(50, 50, 50)",
+    card: "rgb(30, 30, 30)",
+    cta: "rgb(239, 68, 68)",
   },
   greenlight: {
-    background: "rgb(245, 245, 245)", // from --background: 245,245,245
-    border: "rgb(212, 212, 212)", // from --border: 212,212,212
-    card: "rgb(255, 255, 255)", // from --card: 255,255,255
-    cta: "rgb(16, 73, 17)", // from --cta: 16,73,17
+    background: "rgb(245, 245, 245)",
+    border: "rgb(212, 212, 212)",
+    card: "rgb(255, 255, 255)",
+    cta: "rgb(16, 73, 17)",
   },
-
   forest: {
-    background: "rgb(15, 30, 15)",
-    border: "rgb(30, 50, 30)",
-    card: "rgb(40, 70, 40)",
+    background: "rgb(20, 20, 20)",
+    border: "rgb(50, 50, 50)",
+    card: "rgb(30, 30, 30)",
     cta: "rgb(90, 150, 80)",
   },
+  red: {
+    background: "rgb(30, 10, 20)",
+    border: "rgb(70, 40, 50)",
+    card: "rgb(50, 20, 30)",
+    cta: "rgb(255, 80, 110)",
+  },
+
+  // Environmental Themes
+
   desert: {
     background: "rgb(240, 220, 180)",
     border: "rgb(200, 170, 130)",
@@ -61,11 +70,19 @@ const themeColors: Record<
     card: "rgb(20, 50, 70)",
     cta: "rgb(0, 140, 190)",
   },
-  midnight: {
-    background: "rgb(10, 10, 50)",
-    border: "rgb(20, 20, 70)",
-    card: "rgb(30, 30, 90)",
-    cta: "rgb(170, 190, 220)",
+  sunset: {
+    background: "rgb(255, 245, 230)",
+    border: "rgb(255, 200, 160)",
+    card: "rgb(255, 250, 240)",
+    cta: "rgb(255, 130, 10)",
+  },
+
+  // Futuristic / Creative Themes
+  darktech: {
+    background: "rgb(15, 15, 20)",
+    border: "rgb(40, 40, 50)",
+    card: "rgb(25, 25, 30)",
+    cta: "rgb(100, 255, 180)",
   },
   quantum: {
     background: "rgb(10, 10, 15)",
@@ -73,35 +90,25 @@ const themeColors: Record<
     card: "rgb(20, 20, 30)",
     cta: "rgb(0, 180, 180)",
   },
-  sunset: {
-    background: "rgb(255, 245, 230)",
-    border: "rgb(255, 200, 160)",
-    card: "rgb(255, 250, 240)",
-    cta: "rgb(255, 130, 10)",
-  },
-  red: {
-    background: "rgb(30, 10, 20)",
-    border: "rgb(70, 40, 50)",
-    card: "rgb(50, 20, 30)",
-    cta: "rgb(255, 80, 110)",
-  },
-  darktech: {
-    background: "rgb(15, 15, 20)",
-    border: "rgb(40, 40, 50)",
-    card: "rgb(25, 25, 30)",
-    cta: "rgb(100, 255, 180)",
-  },
   infrauv: {
     background: "rgb(15, 5, 25)",
     border: "rgb(60, 10, 80)",
     card: "rgb(35, 15, 55)",
     cta: "rgb(255, 0, 130)",
   },
+  midnight: {
+    background: "rgb(10, 10, 50)",
+    border: "rgb(20, 20, 70)",
+    card: "rgb(30, 30, 90)",
+    cta: "rgb(170, 190, 220)",
+  },
+
+  // Accessibility Theme
   highcontrast: {
     background: "rgb(0, 0, 0)",
     border: "rgb(255, 255, 255)",
     card: "rgb(0, 0, 0)",
-    cta: "rgb(255, 255, 0)", // bright yellow for visibility
+    cta: "rgb(255, 255, 0)",
   },
 };
 

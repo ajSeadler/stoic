@@ -1,6 +1,5 @@
 import React from "react";
-import { ExternalLink } from "lucide-react";
-import { DiGithub } from "react-icons/di";
+import { ExternalLink, Github } from "lucide-react";
 
 interface Project {
   id: string;
@@ -17,18 +16,18 @@ const projects: Project[] = [
     id: "proj1",
     title: "Explore Parks",
     description:
-      "A sophisticated trip planner for U.S. National Parks, crafted to help users effortlessly discover, organize, and customize their outdoor adventures with an intuitive React and TypeScript-powered interface.",
-    techStack: ["React", "TypeScript", "TailwindCSS", "Storybook"],
-    demoUrl: "https://example.com/pixelperfect",
-    repoUrl: "https://github.com/username/pixelperfect-ui",
+      "A US National Parks trip planner. Built with React.ts, Tailwind, Vite, and Node.js. Utilizes the US National Parks REST API. Users can save various parks to an itenerary and view details of their trip, such as how the weather will be, how many days/nights, how many total miles, and more.",
+    techStack: ["React", "TypeScript", "TailwindCSS", "REST API"],
+    demoUrl: "https://nps-parks.netlify.app/",
+    repoUrl: "https://github.com/ajSeadler/tw-layout",
     imageSrc: "/images/nps.png",
   },
   {
     id: "proj2",
-    title: "Skate Spot Social",
+    title: "sesh.",
     description:
-      "A dynamic React Native app where skateboarding enthusiasts can discover local skate spots, share photos and posts, and connect with the community—all optimized for seamless performance and smooth user experience.",
-    techStack: ["React Native", "Expo", "Firebase", "React Navigation"],
+      "A dynamic React Native app where skateboarding enthusiasts can discover local skate spots, share photos and posts, and connect with the community.",
+    techStack: ["React Native", "Expo", "Postgres", "React Navigation"],
     demoUrl: "https://example.com/skatespot-social",
     repoUrl: "https://github.com/username/skatespot-social",
     imageSrc: "/images/skate-social.png",
@@ -38,10 +37,10 @@ const projects: Project[] = [
     title: "OKC Clean Skateparks",
     description:
       "A localized platform connecting Oklahoma City skate park enthusiasts with upcoming cleanup events and community initiatives. Users can discover park details, stay informed through event notifications, and subscribe to newsletters tailored specifically for the OKC skateboarding community.",
-    techStack: ["React", "ARIA", "Jest", "Cypress"],
+    techStack: ["React.ts", "Tailwind", "Node.js"],
     demoUrl: "https://example.com/accessibility",
     repoUrl: "https://github.com/username/accessibility-toolkit",
-    imageSrc: "/images/okcs.png",
+    imageSrc: "/images/okcs-new.png",
   },
 ];
 
@@ -57,48 +56,56 @@ const PortfolioSection: React.FC = () => {
           <article
             key={project.id}
             className={`
-              flex flex-col md:flex-row items-center gap-8
+              flex flex-col md:flex-row items-stretch gap-8
               ${isEven ? "" : "md:flex-row-reverse"}
               rounded-2xl overflow-hidden bg-[rgb(var(--card))]
               border border-[rgb(var(--border))]
-              shadow-[0_4px_20px_rgba(0,0,0,0.05)]
+              shadow-sm hover:shadow-md
+              transition-all duration-300
             `}
           >
-            {/* Image */}
-            <div className="w-full md:w-1/2 h-64 md:h-96 overflow-hidden">
+            {/* Image Container */}
+            <div className="w-full md:w-1/2 h-64 md:h-[400px] overflow-hidden">
               <img
                 src={project.imageSrc}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                className="w-full h-full object-cover"
               />
             </div>
 
-            {/* Text Content */}
-            <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-[rgb(var(--copy))]">
-              <h3 className="text-[calc(var(--user-font-size)*1.8)] font-bold leading-snug">
+            {/* Content Container */}
+            <div className="w-full md:w-1/2 p-5 flex flex-col justify-center text-[rgb(var(--copy))]">
+              <h3 className="text-[calc(var(--user-font-size)*1.75)] font-bold leading-tight mb-4 text-[rgb(var(--cta))]">
                 {project.title}
               </h3>
-              <p className="mt-4 leading-relaxed text-[rgb(var(--copy-secondary))]">
+              <p className="text-[rgb(var(--copy-secondary))] leading-relaxed mb-8">
                 {project.description}
               </p>
 
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {project.techStack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="px-3 py-1 text-xs border border-[rgb(var(--border))] rounded-full bg-[rgba(var(--border),0.05)] text-[rgb(var(--copy-secondary))]"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
+              {/* Tech Stack */}
+              <div className="mb-8">
+                <h4 className="text-sm font-semibold text-[rgb(var(--copy-secondary))] mb-3">
+                  TECH STACK
+                </h4>
+                <ul className="flex flex-wrap gap-2">
+                  {project.techStack.map((tech) => (
+                    <li
+                      key={tech}
+                      className="px-3 py-1 text-sm border border-[rgb(var(--border))] rounded-md bg-[rgb(var(--card))] text-[rgb(var(--copy-secondary))] font-medium"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <div className="mt-6 flex gap-4 flex-wrap">
+              {/* Links */}
+              <div className="flex gap-4 mt-auto">
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[rgb(var(--cta))] hover:text-[rgb(var(--cta-active))] transition"
+                  className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-[rgb(var(--background))] bg-[rgb(var(--cta))] rounded-md hover:bg-[rgb(var(--cta-active))] transition-colors"
                   aria-label={`View live demo of ${project.title}`}
                 >
                   <ExternalLink size={16} className="stroke-[2]" />
@@ -108,10 +115,10 @@ const PortfolioSection: React.FC = () => {
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[rgb(var(--cta))] hover:text-[rgb(var(--cta-active))] transition"
+                  className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-[rgb(var(--cta))] border border-[rgb(var(--border))] rounded-md hover:border-[rgb(var(--cta))] transition-colors"
                   aria-label={`View GitHub repository of ${project.title}`}
                 >
-                  <DiGithub size={18} className="stroke-[2]" />
+                  <Github size={16} className="stroke-[2]" />
                   Source Code
                 </a>
               </div>

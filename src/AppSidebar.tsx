@@ -1,4 +1,4 @@
-import { SidebarOpen, SidebarClose, Home, User, Briefcase } from "lucide-react";
+import { Home, User, Briefcase, Menu, X } from "lucide-react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import FontSizeControl from "./FontSizeControl";
 import { useEffect, useState } from "react";
@@ -159,13 +159,13 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
               className="ml-auto p-2 rounded-full hover:bg-[rgba(var(--cta),0.2)] transition-colors"
             >
               {collapsed ? (
-                <SidebarOpen
+                <Menu
                   className="h-6 w-6"
                   style={{ color: "rgb(var(--cta))" }}
                   aria-hidden="true"
                 />
               ) : (
-                <SidebarClose
+                <X
                   className="h-6 w-6"
                   style={{ color: "rgb(var(--cta))" }}
                   aria-hidden="true"
@@ -298,13 +298,13 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                   className="p-2 rounded-full hover:bg-[rgba(var(--cta),0.2)] transition-colors"
                 >
                   {collapsed ? (
-                    <SidebarOpen
+                    <Menu
                       className="h-6 w-6"
                       style={{ color: "rgb(var(--cta))" }}
                       aria-hidden="true"
                     />
                   ) : (
-                    <SidebarClose
+                    <X
                       className="h-6 w-6"
                       style={{ color: "rgb(var(--cta))" }}
                       aria-hidden="true"

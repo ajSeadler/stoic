@@ -156,15 +156,15 @@ body::-webkit-scrollbar {
 
 /* === FOREST THEME === */
 .forest {
-  --background: 15, 30, 15;
-  /* Very dark forest green */
-  --border: 30, 50, 30;
-  /* Slightly lighter green border */
-  --card: 40, 70, 40;
-  /* Medium forest green card */
-  --copy-primary: 190, 220, 190;
-  /* Light green text */
-  --copy-secondary: 150, 180, 150;
+  --background: 20, 20, 20;
+  /* Very dark gray background */
+  --border: 50, 50, 50;
+  /* Darker border */
+  --card: 30, 30, 30;
+  /* Dark card background */
+  --copy-primary: 230, 230, 230;
+  /* Light gray text */
+  --copy-secondary: 150, 150, 150;
   /* Muted green text */
   --cta: 90, 150, 80;
   /* Soft fern green */
