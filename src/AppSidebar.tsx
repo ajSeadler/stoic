@@ -89,7 +89,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
       ${
         isDesktop
           ? desktopOpen
-            ? "h-72 translate-y-0"
+            ? "h-auto p-2 translate-y-0"
             : "h-16 translate-y-0"
           : mobileOpen
           ? "h-72 translate-y-0"
@@ -104,7 +104,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
       ${
         isDesktop
           ? desktopOpen
-            ? "h-72 translate-y-0"
+            ? "h-auto p-2 translate-y-0"
             : "h-16 translate-y-0"
           : mobileOpen
           ? "h-72 translate-y-0"
@@ -202,15 +202,15 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                     key={to}
                     to={to}
                     className={`
-                      relative z-10 group flex items-center overflow-hidden
+                      relative z-10 group flex items-center overflow-hidden m-1
                       ${
                         isHorizontal
                           ? collapsed
                             ? "px-2 py-2"
-                            : "px-3 py-2"
+                            : "px-3 py-2 rounded-full"
                           : collapsed
                           ? "justify-center px-0 py-3"
-                          : "px-4 py-3 gap-3 rounded-lg mx-2"
+                          : "px-4 py-3 gap-3 rounded-full mx-2"
                       }
                       transition-colors duration-300 ease-in-out
                       ${
@@ -224,7 +224,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                     tabIndex={0}
                   >
                     <Icon
-                      className={`h-5 w-5 flex-shrink-0 ${
+                      className={`h-5 w-5 flex-shrink-0 mr-1${
                         collapsed ? "mx-auto" : ""
                       }`}
                       aria-hidden="true"
@@ -266,7 +266,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
                 }
                 ${
                   isHorizontal
-                    ? "border-l border-[rgb(var(--border))] pl-4"
+                    ? "border-l border-[rgb(var(--border))] pl-2 mt-1"
                     : ""
                 }
               `}

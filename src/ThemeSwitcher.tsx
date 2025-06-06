@@ -1,3 +1,5 @@
+import { SwatchBook } from "lucide-react";
+import { Eye } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 interface ThemeSwitcherProps {
@@ -95,6 +97,12 @@ const themeColors: Record<
     card: "rgb(35, 15, 55)",
     cta: "rgb(255, 0, 130)",
   },
+  highcontrast: {
+    background: "rgb(0, 0, 0)",
+    border: "rgb(255, 255, 255)",
+    card: "rgb(0, 0, 0)",
+    cta: "rgb(255, 255, 0)", // bright yellow for visibility
+  },
 };
 
 const themes = Object.keys(themeColors);
@@ -122,11 +130,14 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
         aria-controls="theme-switcher-panel"
-        className="flex items-center justify-between w-full px-2 py-2 font-semibold text-sm text-copy-secondary  hover:text-[rgb(var(--card))] hover:bg-[rgba(var(--cta),0.3)] cursor-pointer rounded"
+        className="flex items-center justify-between w-full px-3 py-2 font-semibold  text-[rgb(var(--copy-secondary))] hover:text-[rgb(var(--card))] hover:bg-[rgba(var(--cta),0.3)] cursor-pointer rounded-full transition-colors duration-300 ease-in-out"
       >
-        <span>Theme</span>
+        <div className="flex items-center">
+          <SwatchBook className="w-5 h-5 text-[rgb(var(--cta))] mr-1" />
+          <span>Theme</span>
+        </div>
         <svg
-          className={`w-5 h-5 text-copy-secondary transition-transform duration-300 ${
+          className={`w-5 h-5 ml-auto transition-transform duration-300 ${
             expanded ? "rotate-180" : "rotate-0"
           }`}
           fill="none"
@@ -152,6 +163,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
           {themes.map((t) => {
             const colors = themeColors[t];
             const isActive = theme === t;
+            const isHighContrast = t === "highcontrast";
 
             return (
               <button
@@ -159,15 +171,11 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
                 onClick={() => setTheme(t)}
                 aria-label={`Select ${t} theme`}
                 className={`
-                  relative w-full aspect-square rounded transition-colors duration-200
-                  border
-                  ${
-                    isActive
-                      ? "border-cta p-[2px]" // highlight active theme
-                      : "border-border hover:border-cta"
-                  }
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1
-                `}
+        relative w-full aspect-square rounded transition-colors duration-200
+        border
+        ${isActive ? "border-cta p-[2px]" : "border-border hover:border-cta"}
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-1
+      `}
               >
                 {/* Four‐color preview inside */}
                 <div
@@ -195,6 +203,14 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
                     title="CTA"
                   />
                 </div>
+
+                {/* Add high contrast icon if applicable */}
+                {isHighContrast && (
+                  <Eye
+                    className="absolute top-1 right-1 w-5 h-5 bg-gray-100 rounded-full text-black drop-shadow"
+                    aria-hidden="true"
+                  />
+                )}
               </button>
             );
           })}
