@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppSidebar from "./AppSidebar";
-import { useTheme } from "./useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import { SidebarOpen } from "lucide-react";
 
 interface AppLayoutProps {

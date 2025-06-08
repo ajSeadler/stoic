@@ -1,4 +1,4 @@
-import PortfolioSection from "../PortfolioSection";
+import PortfolioSection from "../components/sections/PortfolioSection";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 

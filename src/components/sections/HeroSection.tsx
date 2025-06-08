@@ -65,7 +65,7 @@ const HeroSection = () => {
             letterSpacing: "-0.015em",
           }}
         >
-          Hi, I’m <span className="text-[rgb(var(--cta))]">AJ</span>
+          Hi, I'm <span className="text-[rgb(var(--cta))]">AJ</span>{" "}
         </motion.h1>
 
         <motion.div
@@ -74,7 +74,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-[rgb(var(--copy-secondary))] leading-relaxed text-lg"
         >
-          <span className="mr-1">I’m a</span>
+          <span className="mr-1">I'm a</span>
           <span className="font-medium text-[rgb(var(--cta))]">
             {currentWord}
             <span className="inline-block animate-blink">|</span>

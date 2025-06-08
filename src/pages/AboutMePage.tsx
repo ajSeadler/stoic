@@ -1,7 +1,8 @@
 import React from "react";
-import GithubStats from "../GithubStats";
+import GithubStats from "../components/GithubStats";
 import { Mail } from "lucide-react";
-import GithubCallout from "../GithubCallout";
+import GithubCallout from "../components/GithubCallout";
+import BooksSection from "../components/sections/BooksSection";
 
 const roles = [
   "Full-Stack Developer",
@@ -49,12 +50,12 @@ const AboutMePage: React.FC = () => {
         {/* ── Bio */}
         <div className="w-full space-y-3 text-[rgb(var(--copy-secondary))] leading-relaxed text-[0.875rem] sm:text-base">
           <p>
-            I’m a full-stack developer and network technician. Currently
-            pursuing my cybersecurity bachelor’s while honing skills in React,
+            I'm a full-stack developer and network technician. Currently
+            pursuing my cybersecurity bachelor's while honing skills in React,
             Node.js, and network security, particularly NSM.
           </p>
           <p>
-            When I’m not coding or studying, you’ll find me skateboarding,
+            When I'm not coding or studying, you'll find me skateboarding,
             hiking/backpacking, or digging into the latest tech trends.
           </p>
         </div>
@@ -94,7 +95,9 @@ const AboutMePage: React.FC = () => {
 
         {/* ── GitHub Stats */}
       </section>
+
       <GithubStats />
+      <BooksSection />
     </main>
   );
 };

@@ -1,6 +1,6 @@
-import { Home, User, Briefcase, Menu, X } from "lucide-react";
-import ThemeSwitcher from "./ThemeSwitcher";
-import FontSizeControl from "./FontSizeControl";
+import { Home, User, Briefcase, Menu, X, BookOpenIcon } from "lucide-react";
+import ThemeSwitcher from "../common/ThemeSwitcher";
+import FontSizeControl from "../common/FontSizeControl";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -33,6 +33,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
     { to: "/", label: "Home", Icon: Home },
     { to: "/about", label: "About Me", Icon: User },
     { to: "/portfolio", label: "Portfolio", Icon: Briefcase },
+    { to: "/books", label: "Good Reads", Icon: BookOpenIcon },
   ];
 
   const [isDesktop, setIsDesktop] = useState(false);

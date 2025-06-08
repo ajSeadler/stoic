@@ -28,7 +28,7 @@ const GithubCallout: React.FC = () => {
         className="mt-2 relative text-[rgb(var(--copy-secondary))] font-medium tracking-wide cursor-default"
         style={{ fontSize: "calc(var(--user-font-size) * 0.9)" }}
       >
-        <span className="pb-0.5">GitHub Info</span>
+        <span className="pb-0.5">More Info</span>
         <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-[rgb(var(--copy-secondary))] transition-all duration-300 -translate-x-1/2 group-hover:w-3/4"></span>
       </span>
     </motion.div>
