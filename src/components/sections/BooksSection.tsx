@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
 import { Star, ExternalLink } from "lucide-react";
 
@@ -24,11 +25,23 @@ const initialBooks: Array<{ title: string; authors: string[]; isbn: string }> =
       isbn: "9781593275099",
     },
     {
+      title:
+        "Slow Productivity - The Lost Art of Accomplishment without Burnout",
+      authors: ["Cal Newport"],
+      isbn: "9780593544859",
+    },
+    {
       title: "The Name of the Wind",
       authors: ["Patrick Rothfuss"],
       isbn: "9780756404741",
     },
     { title: "Desperation", authors: ["Stephen King"], isbn: "9780670868360" },
+
+    {
+      title: "Slaughter House Five",
+      authors: [""],
+      isbn: "9780385333498",
+    },
   ];
 
 const formatDate = (raw: string) => {
@@ -115,6 +128,7 @@ const BooksSection = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [genre, setGenre] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -151,6 +165,14 @@ const BooksSection = () => {
     })();
   }, []);
 
+  const allGenres = Array.from(
+    new Set(books.flatMap((b) => b.categories))
+  ).sort();
+
+  const filteredBooks = genre
+    ? books.filter((b) => b.categories.includes(genre))
+    : books;
+
   if (loading)
     return (
       <div className="flex items-center justify-center h-64">
@@ -169,11 +191,41 @@ const BooksSection = () => {
       <h2 className="text-2xl font-semibold text-[rgb(var(--copy-primary))]">
         Good Reads
       </h2>
+
+      {allGenres.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setGenre(null)}
+            className={`px-3 py-1 rounded-full text-sm font-medium border transition-colors duration-200 ${
+              genre === null
+                ? "bg-[rgb(var(--cta))] text-white border-transparent"
+                : "bg-transparent text-[rgb(var(--cta))] border-[rgb(var(--cta))] hover:bg-[rgb(var(--cta))] hover:text-white"
+            }`}
+          >
+            All
+          </button>
+          {allGenres.map((g) => (
+            <button
+              key={g}
+              onClick={() => setGenre(g)}
+              className={`px-3 py-1 rounded-full text-sm font-medium border transition-colors duration-200 ${
+                genre === g
+                  ? "bg-[rgb(var(--cta))] text-white border-transparent"
+                  : "bg-transparent text-[rgb(var(--cta))] border-[rgb(var(--cta))] hover:bg-[rgb(var(--cta))] hover:text-white"
+              }`}
+            >
+              {g}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="space-y-4">
-        {books.map((b) => (
+        {filteredBooks.map((b) => (
           <BookCard key={b.id} book={b} />
         ))}
       </div>
+
       <p className="text-xs text-[rgb(var(--copy-secondary))] text-right mt-6">
         Book data provided by{" "}
         <a
