@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.1.2",
+    "@react-three/fiber": "^9.1.2",
     "@tailwindcss/vite": "^4.1.8",
     "@tanstack/react-query": "^5.79.2",
+    "@types/three": "^0.177.0",
     "framer-motion": "^12.15.0",
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
@@ -20,6 +23,7 @@
     "react-router-dom": "^7.6.1",
     "react-syntax-highlighter": "^15.6.1",
     "tailwindcss": "^4.1.8",
+    "three": "^0.177.0",
     "use-sound": "^5.0.0"
   },
   "devDependencies": {
