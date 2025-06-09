@@ -14,10 +14,8 @@ function Loader() {
     <Html center>
       <div
         style={{
-          color: "white",
           fontWeight: 600,
           fontSize: 18,
-          background: "rgba(0,0,0,0.5)",
           padding: "1em 2em",
           borderRadius: 8,
         }}
@@ -42,12 +40,12 @@ export function Scene3D() {
             position={[10, 10, 10]}
             angle={0.15}
             penumbra={1}
-            intensity={1}
+            intensity={2}
           />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} />
+          <pointLight position={[-10, -10, -10]} intensity={1} />
           <ReactModel
             position={[0, 0, 0]}
-            scale={2}
+            scale={1}
             rotation={[0, Math.PI / 4, 0]}
           />
           <Environment preset="city" />

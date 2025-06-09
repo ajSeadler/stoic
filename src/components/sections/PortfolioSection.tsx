@@ -58,7 +58,8 @@ const PortfolioSection: React.FC = () => {
             className={`
               flex flex-col md:flex-row items-stretch gap-8
               ${isEven ? "" : "md:flex-row-reverse"}
-              rounded-2xl overflow-hidden bg-[rgb(var(--card))]
+              rounded-2xl overflow-hidden bg-transparent
+              backdrop-blur-md
               border border-[rgb(var(--border))]
               shadow-sm hover:shadow-md
               transition-all duration-300
