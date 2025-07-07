@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Mail, Rocket } from "lucide-react";
 // import HeroSnippet from "./HeroSnippet";
 import PortfolioSection from "./PortfolioSection";
-import { Scene3D } from "../3d/Scene3D";
 
 const TYPEWRITER_WORDS = [
   "Full-Stack Developer",
@@ -49,11 +48,6 @@ const HeroSection = () => {
 
   return (
     <>
-      {/* Fixed 3D Background */}
-      <div className="fixed inset-0 opacity-20 pointer-events-none">
-        <Scene3D />
-      </div>
-
       <section
         aria-label="Hero section"
         className="p-6 pt-20 w-full md:px-16 text-[rgb(var(--copy-primary))] relative"

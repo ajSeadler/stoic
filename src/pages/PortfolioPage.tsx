@@ -10,7 +10,7 @@ const PortfolioPage = () => {
     >
       {/* Hero Section */}
       <section className="relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -18,19 +18,19 @@ const PortfolioPage = () => {
             className="text-center space-y-6"
           >
             <h1
-              className="font-extrabold leading-tight tracking-tight text-[rgb(var(--cta))]"
+              className="font-extrabold tracking-tight text-[rgb(var(--cta))]"
               style={{
-                fontSize: "calc(var(--user-font-size) * 3)",
+                fontSize: "clamp(2rem, 6vw, calc(var(--user-font-size) * 3))",
                 lineHeight: "1.1",
               }}
             >
               Portfolio
             </h1>
             <p
-              className="text-[rgb(var(--copy-secondary))] max-w-2xl mx-auto leading-relaxed"
+              className="text-[rgb(var(--copy-secondary))] max-w-2xl mx-auto leading-relaxed px-4"
               style={{
-                fontSize: "calc(var(--user-font-size) * 1.1)",
-                lineHeight: "1.6",
+                fontSize:
+                  "clamp(1rem, 3.2vw, calc(var(--user-font-size) * 1.1))",
               }}
             >
               A collection of full-stack and frontend builds I have developed
@@ -38,40 +38,42 @@ const PortfolioPage = () => {
             </p>
           </motion.div>
 
-          {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-[rgb(var(--copy-secondary))]"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center text-[rgb(var(--copy-secondary))]"
           >
-            <span className="text-sm mb-2">Scroll to explore</span>
+            <span className="text-xs sm:text-sm mb-2">Scroll to explore</span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 1.2 }}
             >
-              <ArrowDown className="w-5 h-5" />
+              <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
         <PortfolioSection />
       </section>
 
       {/* Skills Section */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
-        <div className="bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-2xl p-8 md:p-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+        <div className="bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-2xl p-6 sm:p-10">
           <h2
-            className="text-[rgb(var(--copy))] font-bold mb-12 text-center"
-            style={{ fontSize: "calc(var(--user-font-size) * 1.75)" }}
+            className="text-[rgb(var(--copy))] font-bold mb-10 text-center"
+            style={{
+              fontSize:
+                "clamp(1.5rem, 4vw, calc(var(--user-font-size) * 1.75))",
+            }}
           >
             Technical Expertise
           </h2>
           <div
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-[rgb(var(--copy-secondary))]"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-[rgb(var(--copy-secondary))]"
             style={{ fontSize: "var(--user-font-size)" }}
           >
             <div className="space-y-3">

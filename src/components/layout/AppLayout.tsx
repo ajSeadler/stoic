@@ -48,7 +48,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         color: "rgb(var(--copy-primary))",
       }}
     >
-      {/* ⬅️ Sidebar: shown if not mobile or mobile + open */}
+      {/*  Sidebar: shown if not mobile or mobile + open */}
       {(isMobile && !sidebarCollapsed) || !isMobile ? (
         <AppSidebar
           theme={theme}
@@ -60,7 +60,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         />
       ) : null}
 
-      {/* 🍔 Mobile Toggle Button */}
+      {/*  Mobile Toggle Button */}
       <button
         onClick={toggleSidebar}
         aria-label={sidebarCollapsed ? "Open menu" : "Close menu"}
@@ -76,7 +76,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         )}
       </button>
 
-      {/* 📦 Main content with layout offset */}
+      {/* Main content with layout offset */}
       <div
         className={`transition-all duration-300 ease-in-out ${getOffsetClass()}`}
       >

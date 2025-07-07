@@ -1,8 +1,8 @@
 import React from "react";
-import GithubStats from "../components/GithubStats";
+// import GithubStats from "../components/GithubStats";
 import { Mail } from "lucide-react";
-import GithubCallout from "../components/GithubCallout";
-import BooksSection from "../components/sections/BooksSection";
+// import GithubCallout from "../components/GithubCallout";
+// import BooksSection from "../components/sections/BooksSection";
 
 const roles = [
   "Full-Stack Developer",
@@ -87,17 +87,17 @@ const AboutMePage: React.FC = () => {
             <Mail className="w-5 h-5 stroke-[3]" />
             <span>Contact Me</span>
           </a>
-          <GithubCallout />
+          {/* <GithubCallout /> */}
         </div>
 
         {/* ── Divider */}
-        <hr className="border-[rgb(var(--border))] my-6" />
+        {/* <hr className="border-[rgb(var(--border))] my-6" /> */}
 
         {/* ── GitHub Stats */}
       </section>
 
-      <GithubStats />
-      <BooksSection />
+      {/* <GithubStats />
+      <BooksSection /> */}
     </main>
   );
 };
